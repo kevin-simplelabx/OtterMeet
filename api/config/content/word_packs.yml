@@ -1,0 +1,617 @@
+# Split Words & Imposter word packs: the 800 words from the OtterMeet master spec, section 4.
+# Each tribe is 4 pairs (a squad of 8). The trio word turns a pair into three when numbers are odd.
+- id: pack1
+  name: "Local Food & Hawker Culture"
+  tribes:
+    - name: "Kopitiam Breakfast"
+      pairs:
+        - { a: "Kaya", b: "Toast", trio: "Butter" }
+        - { a: "Boiled", b: "Eggs", trio: "Soft" }
+        - { a: "Kopi", b: "O", trio: "Hot" }
+        - { a: "Teh", b: "Tarik", trio: "Pulled" }
+    - name: "Chicken Rice Stall"
+      pairs:
+        - { a: "Chicken", b: "Rice", trio: "Hainanese" }
+        - { a: "Drum", b: "Stick", trio: "Roasted" }
+        - { a: "Chilli", b: "Sauce", trio: "Garlic" }
+        - { a: "Soy", b: "Sauce", trio: "Dark" }
+    - name: "Seafood Zi Char"
+      pairs:
+        - { a: "Chilli", b: "Crab", trio: "Singapore" }
+        - { a: "Pepper", b: "Crab", trio: "Black" }
+        - { a: "Man", b: "Tou", trio: "Golden" }
+        - { a: "Fried", b: "Prawn", trio: "Cereal" }
+    - name: "Satay Night Market"
+      pairs:
+        - { a: "Mutton", b: "Satay", trio: "Charcoal" }
+        - { a: "Chicken", b: "Wing", trio: "Sticky" }
+        - { a: "Peanut", b: "Sauce", trio: "Chunky" }
+        - { a: "Ketu", b: "Pat", trio: "Pressed" }
+    - name: "Noodle Hawker"
+      pairs:
+        - { a: "Laksa", b: "Broth", trio: "Katong" }
+        - { a: "Mee", b: "Soup", trio: "Prawn" }
+        - { a: "Chor", b: "Mee", trio: "Bak" }
+        - { a: "Ball", b: "Noodles", trio: "Fish" }
+    - name: "Wok Hei Classics"
+      pairs:
+        - { a: "Kway", b: "Teow", trio: "Char" }
+        - { a: "Hor", b: "Fun", trio: "Beef" }
+        - { a: "Prawn", b: "Mee", trio: "Hokkien" }
+        - { a: "Chai", b: "TowKway", trio: "Carrot" }
+    - name: "Prata Supper"
+      pairs:
+        - { a: "Roti", b: "Prata", trio: "Crispy" }
+        - { a: "Tissue", b: "Prata", trio: "Sweet" }
+        - { a: "Fish", b: "Curry", trio: "Mutton" }
+        - { a: "Teh", b: "Halia", trio: "Iced" }
+    - name: "Nasi Lemak Feast"
+      pairs:
+        - { a: "Nasi", b: "Lemak", trio: "Coconut" }
+        - { a: "Pandan", b: "Chicken", trio: "Crispy" }
+        - { a: "Sambal", b: "IkanBilis", trio: "Spicy" }
+        - { a: "Sunny", b: "Egg", trio: "Fried" }
+    - name: "Icy Desserts"
+      pairs:
+        - { a: "Ice", b: "Kachang", trio: "RedBean" }
+        - { a: "Chendol", b: "Melaka", trio: "Gula" }
+        - { a: "Cheng", b: "Tng", trio: "Cold" }
+        - { a: "Honey", b: "Dew", trio: "Sago" }
+    - name: "Dim Sum Basket"
+      pairs:
+        - { a: "Siew", b: "Mai", trio: "Pork" }
+        - { a: "Har", b: "Gow", trio: "Prawn" }
+        - { a: "LiuSha", b: "Bao", trio: "SaltedEgg" }
+        - { a: "CheeCheong", b: "Fun", trio: "Rice" }
+    - name: "Bak Kut Teh Table"
+      pairs:
+        - { a: "BakKut", b: "Teh", trio: "Peppery" }
+        - { a: "Pork", b: "Trotter", trio: "Braised" }
+        - { a: "You", b: "Tiao", trio: "Crispy" }
+        - { a: "Oolong", b: "Tea", trio: "Poured" }
+    - name: "Rojak & Snacks"
+      pairs:
+        - { a: "Fruit", b: "Rojak", trio: "Penang" }
+        - { a: "Sotong", b: "YouTiao", trio: "Crispy" }
+        - { a: "Popiah", b: "Skin", trio: "Fresh" }
+        - { a: "Muah", b: "Chee", trio: "Peanut" }
+    - name: "Peranakan Tok Panjang"
+      pairs:
+        - { a: "Ayam", b: "BuahKeluak", trio: "Braised" }
+        - { a: "Beef", b: "Rendang", trio: "Spiced" }
+        - { a: "Kueh", b: "Lapis", trio: "Rainbow" }
+        - { a: "Ondeh", b: "Ondeh", trio: "Gula" }
+    - name: "Claypot & Hotplate"
+      pairs:
+        - { a: "Claypot", b: "Rice", trio: "Charcoal" }
+        - { a: "Sting", b: "Ray", trio: "Sambal" }
+        - { a: "Oyster", b: "Omelette", trio: "Crispy" }
+        - { a: "Kang", b: "Kong", trio: "Sambal" }
+    - name: "Steamboat Gathering"
+      pairs:
+        - { a: "Mala", b: "Broth", trio: "Collagen" }
+        - { a: "TomYum", b: "Soup", trio: "Clear" }
+        - { a: "Shabu", b: "Beef", trio: "Sliced" }
+        - { a: "Prawn", b: "Paste", trio: "Handmade" }
+    - name: "Old School Bakery"
+      pairs:
+        - { a: "Pandan", b: "Cake", trio: "Green" }
+        - { a: "Egg", b: "Tart", trio: "Butter" }
+        - { a: "Curry", b: "Puff", trio: "Crispy" }
+        - { a: "Cream", b: "Bun", trio: "Coconut" }
+    - name: "Drink Stall Coolers"
+      pairs:
+        - { a: "Sugar", b: "Cane", trio: "Fresh" }
+        - { a: "Calamansi", b: "Juice", trio: "Sour" }
+        - { a: "Bandung", b: "Rose", trio: "Cold" }
+        - { a: "Milo", b: "Dinosaur", trio: "Iced" }
+    - name: "Teochew Porridge"
+      pairs:
+        - { a: "SweetPotato", b: "Porridge", trio: "Plain" }
+        - { a: "Duck", b: "Meat", trio: "Braised" }
+        - { a: "Duck", b: "Egg", trio: "Salted" }
+        - { a: "Minced", b: "Pork", trio: "Steamed" }
+    - name: "Indian Muslim Mamak"
+      pairs:
+        - { a: "Mee", b: "Goreng", trio: "Spicy" }
+        - { a: "Murta", b: "Bak", trio: "Mutton" }
+        - { a: "Sup", b: "Tulang", trio: "Red" }
+        - { a: "Baguette", b: "Loaf", trio: "French" }
+    - name: "Festive Goodies"
+      pairs:
+        - { a: "Pineapple", b: "Tart", trio: "Golden" }
+        - { a: "Bak", b: "Kwa", trio: "Grilled" }
+        - { a: "Love", b: "Letters", trio: "Crispy" }
+        - { a: "Kueh", b: "Bangkit", trio: "Steamed" }
+- id: pack2
+  name: "Technology & Digital Life"
+  tribes:
+    - name: "Wireless Connectivity"
+      pairs:
+        - { a: "Wi", b: "Fi", trio: "Home" }
+        - { a: "Blue", b: "Tooth", trio: "Paired" }
+        - { a: "Hot", b: "Spot", trio: "Fast" }
+        - { a: "Band", b: "Width", trio: "Broad" }
+    - name: "Desk Setup & Peripherals"
+      pairs:
+        - { a: "Key", b: "Board", trio: "Mechanical" }
+        - { a: "Track", b: "Pad", trio: "Wireless" }
+        - { a: "Web", b: "Cam", trio: "Dual" }
+        - { a: "Head", b: "Phones", trio: "Noise" }
+    - name: "Software Engineering"
+      pairs:
+        - { a: "Source", b: "Code", trio: "Open" }
+        - { a: "Git", b: "Hub", trio: "Pull" }
+        - { a: "Hot", b: "Fix", trio: "Bug" }
+        - { a: "Stack", b: "Dev", trio: "Full" }
+    - name: "Cloud & Infrastructure"
+      pairs:
+        - { a: "Data", b: "Base", trio: "Cloud" }
+        - { a: "Micro", b: "Service", trio: "Virtual" }
+        - { a: "Fire", b: "Wall", trio: "Load" }
+        - { a: "Server", b: "Rack", trio: "Edge" }
+    - name: "Artificial Intelligence"
+      pairs:
+        - { a: "Machine", b: "Learning", trio: "Deep" }
+        - { a: "Net", b: "Work", trio: "Neural" }
+        - { a: "Prompt", b: "Engineer", trio: "Chat" }
+        - { a: "Language", b: "Model", trio: "Large" }
+    - name: "Cybersecurity"
+      pairs:
+        - { a: "Pass", b: "Word", trio: "Two" }
+        - { a: "Bio", b: "Metric", trio: "Face" }
+        - { a: "Mal", b: "Ware", trio: "Phishing" }
+        - { a: "En", b: "Cryption", trio: "EndToEnd" }
+    - name: "Smartphone Daily"
+      pairs:
+        - { a: "Screen", b: "Shot", trio: "Double" }
+        - { a: "Air", b: "Drop", trio: "Dark" }
+        - { a: "Power", b: "Bank", trio: "Fast" }
+        - { a: "Push", b: "Notification", trio: "App" }
+    - name: "Web & Browser"
+      pairs:
+        - { a: "Web", b: "Site", trio: "Home" }
+        - { a: "Book", b: "Mark", trio: "Incognito" }
+        - { a: "Cache", b: "Cookie", trio: "Browser" }
+        - { a: "Hyper", b: "Link", trio: "Search" }
+    - name: "Gaming & Esports"
+      pairs:
+        - { a: "Joy", b: "Stick", trio: "Arcade" }
+        - { a: "Frame", b: "Rate", trio: "High" }
+        - { a: "Boss", b: "Fight", trio: "Final" }
+        - { a: "Leader", b: "Board", trio: "Respawn" }
+    - name: "Social Media Creators"
+      pairs:
+        - { a: "Live", b: "Stream", trio: "Short" }
+        - { a: "Hash", b: "Tag", trio: "Viral" }
+        - { a: "News", b: "Feed", trio: "Click" }
+        - { a: "Sub", b: "Scriber", trio: "Verified" }
+    - name: "E-Commerce & Fintech"
+      pairs:
+        - { a: "Check", b: "Out", trio: "Shopping" }
+        - { a: "Voucher", b: "Code", trio: "Promo" }
+        - { a: "Pay", b: "Now", trio: "Tap" }
+        - { a: "Block", b: "Chain", trio: "Crypto" }
+    - name: "Hardware & Makers"
+      pairs:
+        - { a: "Circuit", b: "Board", trio: "Printed" }
+        - { a: "Chip", b: "Set", trio: "Micro" }
+        - { a: "Cut", b: "Ting", trio: "Laser" }
+        - { a: "Print", b: "Ing", trio: "3D" }
+    - name: "Video Calls & Remote"
+      pairs:
+        - { a: "Micro", b: "Phone", trio: "Mute" }
+        - { a: "Screen", b: "Cast", trio: "Share" }
+        - { a: "Back", b: "Ground", trio: "Blurred" }
+        - { a: "Lag", b: "Spike", trio: "Frozen" }
+    - name: "Data & Analytics"
+      pairs:
+        - { a: "Spread", b: "Sheet", trio: "Pivot" }
+        - { a: "Dash", b: "Board", trio: "Live" }
+        - { a: "Data", b: "Point", trio: "Key" }
+        - { a: "Fore", b: "Cast", trio: "Trend" }
+    - name: "Smart Home IoT"
+      pairs:
+        - { a: "Smart", b: "Speaker", trio: "Voice" }
+        - { a: "Vacuum", b: "Cleaner", trio: "Robot" }
+        - { a: "Door", b: "Lock", trio: "Digital" }
+        - { a: "Smart", b: "Bulb", trio: "Motion" }
+    - name: "Design & UX"
+      pairs:
+        - { a: "Wire", b: "Frame", trio: "User" }
+        - { a: "Style", b: "Guide", trio: "Color" }
+        - { a: "Icon", b: "Pack", trio: "Vector" }
+        - { a: "User", b: "Interface", trio: "Dark" }
+    - name: "File Formats & Storage"
+      pairs:
+        - { a: "Hard", b: "Drive", trio: "Shared" }
+        - { a: "Flash", b: "Drive", trio: "Thumb" }
+        - { a: "File", b: "Folder", trio: "Zipped" }
+        - { a: "Back", b: "Up", trio: "Cloud" }
+    - name: "Tech Startup Life"
+      pairs:
+        - { a: "Viable", b: "Product", trio: "Minimum" }
+        - { a: "Test", b: "Ing", trio: "Beta" }
+        - { a: "Venture", b: "Capital", trio: "Pitch" }
+        - { a: "Scale", b: "Up", trio: "Unicorn" }
+    - name: "Audio & Podcasts"
+      pairs:
+        - { a: "Sound", b: "Bar", trio: "Studio" }
+        - { a: "Ear", b: "Buds", trio: "True" }
+        - { a: "Pod", b: "Cast", trio: "Weekly" }
+        - { a: "Play", b: "List", trio: "LoFi" }
+    - name: "Future Tech"
+      pairs:
+        - { a: "Augmented", b: "Reality", trio: "Virtual" }
+        - { a: "Autonomous", b: "Driving", trio: "Self" }
+        - { a: "Super", b: "Computer", trio: "Quantum" }
+        - { a: "Satel", b: "Lite", trio: "Space" }
+- id: pack3
+  name: "Travel, Aviation & Landmarks"
+  tribes:
+    - name: "Airport Check-In"
+      pairs:
+        - { a: "Pass", b: "Port", trio: "Biometric" }
+        - { a: "Boarding", b: "Pass", trio: "Mobile" }
+        - { a: "Hand", b: "Carry", trio: "Cabin" }
+        - { a: "Drop", b: "Off", trio: "Baggage" }
+    - name: "In-Flight Experience"
+      pairs:
+        - { a: "Window", b: "Seat", trio: "Extra" }
+        - { a: "Exit", b: "Row", trio: "Emergency" }
+        - { a: "Seat", b: "Belt", trio: "Safety" }
+        - { a: "Meal", b: "Tray", trio: "Inflight" }
+    - name: "Hotel Staycation"
+      pairs:
+        - { a: "Check", b: "In", trio: "Late" }
+        - { a: "Key", b: "Card", trio: "Room" }
+        - { a: "Break", b: "Fast", trio: "Buffet" }
+        - { a: "Swimming", b: "Pool", trio: "Infinity" }
+    - name: "Backpacking Gear"
+      pairs:
+        - { a: "Back", b: "Pack", trio: "Waterproof" }
+        - { a: "Travel", b: "Cube", trio: "Packing" }
+        - { a: "Neck", b: "Pillow", trio: "Sleeping" }
+        - { a: "Travel", b: "Adapter", trio: "Universal" }
+    - name: "Singapore Icons"
+      pairs:
+        - { a: "Bay", b: "Sands", trio: "Marina" }
+        - { a: "Water", b: "Front", trio: "Merlion" }
+        - { a: "Cloud", b: "Forest", trio: "Supertree" }
+        - { a: "Rain", b: "Vortex", trio: "Jewel" }
+    - name: "Beach Resort"
+      pairs:
+        - { a: "Sun", b: "Block", trio: "Tropical" }
+        - { a: "Palm", b: "Tree", trio: "Coconut" }
+        - { a: "Scuba", b: "Diving", trio: "Coral" }
+        - { a: "Speed", b: "Boat", trio: "Sunset" }
+    - name: "Winter Holiday"
+      pairs:
+        - { a: "Down", b: "Jacket", trio: "Thermal" }
+        - { a: "Snow", b: "Boots", trio: "Woolen" }
+        - { a: "Ski", b: "Lift", trio: "Alpine" }
+        - { a: "Onsen", b: "Bath", trio: "Hot" }
+    - name: "Road Trip Adventure"
+      pairs:
+        - { a: "Car", b: "Keys", trio: "Rental" }
+        - { a: "Toll", b: "Booth", trio: "Highway" }
+        - { a: "Street", b: "Map", trio: "Google" }
+        - { a: "Rest", b: "Stop", trio: "Pit" }
+    - name: "Cruise Vacation"
+      pairs:
+        - { a: "Cruise", b: "Ship", trio: "Ocean" }
+        - { a: "State", b: "Room", trio: "Balcony" }
+        - { a: "Gala", b: "Dinner", trio: "Captain" }
+        - { a: "Shore", b: "Excursion", trio: "Port" }
+    - name: "Train & Rail Journey"
+      pairs:
+        - { a: "Shinkan", b: "Sen", trio: "Bullet" }
+        - { a: "Train", b: "Carriage", trio: "Sleeping" }
+        - { a: "Ticket", b: "Gate", trio: "Platform" }
+        - { a: "Metro", b: "Line", trio: "Subway" }
+    - name: "Camping & Outdoors"
+      pairs:
+        - { a: "Camp", b: "Site", trio: "Pitched" }
+        - { a: "Camp", b: "Fire", trio: "Glowing" }
+        - { a: "Basha", b: "Tent", trio: "Canvas" }
+        - { a: "Head", b: "Lamp", trio: "Flash" }
+    - name: "European Landmarks"
+      pairs:
+        - { a: "Eiffel", b: "Tower", trio: "Iron" }
+        - { a: "Big", b: "Ben", trio: "London" }
+        - { a: "Colos", b: "Seum", trio: "Roman" }
+        - { a: "Pisa", b: "Tower", trio: "Leaning" }
+    - name: "Asian Hotspots"
+      pairs:
+        - { a: "Cross", b: "Ing", trio: "Shibuya" }
+        - { a: "Fuji", b: "San", trio: "Mount" }
+        - { a: "Chatuchak", b: "Market", trio: "Night" }
+        - { a: "Rice", b: "Terrace", trio: "Ubud" }
+    - name: "Theme Park Day"
+      pairs:
+        - { a: "Roller", b: "Coaster", trio: "Looping" }
+        - { a: "Drop", b: "Tower", trio: "Haunted" }
+        - { a: "Fast", b: "Pass", trio: "Express" }
+        - { a: "Fire", b: "Works", trio: "Night" }
+    - name: "Duty Free & Souvenirs"
+      pairs:
+        - { a: "Duty", b: "Free", trio: "Airport" }
+        - { a: "Refund", b: "Counter", trio: "Tax" }
+        - { a: "Post", b: "Card", trio: "Fridge" }
+        - { a: "Key", b: "Chain", trio: "Local" }
+    - name: "Public Transit SG"
+      pairs:
+        - { a: "Simply", b: "Go", trio: "Tap" }
+        - { a: "Decker", b: "Bus", trio: "Double" }
+        - { a: "MRT", b: "Line", trio: "Circle" }
+        - { a: "Inter", b: "Change", trio: "Bus" }
+    - name: "Photography Tour"
+      pairs:
+        - { a: "Camera", b: "Lens", trio: "Wide" }
+        - { a: "Tri", b: "Pod", trio: "Carbon" }
+        - { a: "Sun", b: "Set", trio: "Golden" }
+        - { a: "Group", b: "Selfie", trio: "Pano" }
+    - name: "Loyalty & Miles"
+      pairs:
+        - { a: "Air", b: "Miles", trio: "KrisFlyer" }
+        - { a: "Lounge", b: "Access", trio: "Star" }
+        - { a: "Class", b: "Seat", trio: "Business" }
+        - { a: "Board", b: "Ing", trio: "Priority" }
+    - name: "Island Hopping"
+      pairs:
+        - { a: "Siloso", b: "Beach", trio: "Sentosa" }
+        - { a: "Island", b: "Ferry", trio: "Lazarus" }
+        - { a: "Chek", b: "Jawa", trio: "Ubin" }
+        - { a: "Bike", b: "Trail", trio: "Mountain" }
+    - name: "World Wonders"
+      pairs:
+        - { a: "China", b: "Wall", trio: "Great" }
+        - { a: "Giza", b: "Pyramid", trio: "Desert" }
+        - { a: "Canyon", b: "Rim", trio: "Grand" }
+        - { a: "Aurora", b: "Lights", trio: "Northern" }
+- id: pack4
+  name: "Pop Culture, Movies & Games"
+  tribes:
+    - name: "Superhero Universe"
+      pairs:
+        - { a: "Iron", b: "Man", trio: "Tony" }
+        - { a: "Captain", b: "America", trio: "Shield" }
+        - { a: "Spider", b: "Man", trio: "Friendly" }
+        - { a: "Bat", b: "Man", trio: "Dark" }
+    - name: "Star Wars Galaxy"
+      pairs:
+        - { a: "Light", b: "Saber", trio: "Glowing" }
+        - { a: "Darth", b: "Vader", trio: "Dark" }
+        - { a: "Star", b: "Ship", trio: "Millennium" }
+        - { a: "Master", b: "Yoda", trio: "Baby" }
+    - name: "Wizarding World"
+      pairs:
+        - { a: "Elder", b: "Wand", trio: "Magic" }
+        - { a: "Broom", b: "Stick", trio: "Flying" }
+        - { a: "Wizard", b: "Hat", trio: "Sorting" }
+        - { a: "Quidditch", b: "Snitch", trio: "Golden" }
+    - name: "Disney Classics"
+      pairs:
+        - { a: "Lion", b: "King", trio: "Pride" }
+        - { a: "Snow", b: "Queen", trio: "Frozen" }
+        - { a: "Magic", b: "Carpet", trio: "Genie" }
+        - { a: "Cinderella", b: "Slipper", trio: "Glass" }
+    - name: "Classic Board Games"
+      pairs:
+        - { a: "Mono", b: "Poly", trio: "PassGo" }
+        - { a: "Scrab", b: "Ble", trio: "Triple" }
+        - { a: "Clue", b: "Do", trio: "Murder" }
+        - { a: "Ca", b: "Tan", trio: "Settlers" }
+    - name: "90s Arcade & Retro"
+      pairs:
+        - { a: "Pika", b: "Chu", trio: "Electric" }
+        - { a: "Poke", b: "Ball", trio: "Red" }
+        - { a: "Mario", b: "Kart", trio: "Super" }
+        - { a: "Pac", b: "Man", trio: "Donkey" }
+    - name: "Cinema Night Out"
+      pairs:
+        - { a: "Pop", b: "Corn", trio: "Caramel" }
+        - { a: "Nacho", b: "Chips", trio: "Cheese" }
+        - { a: "Movie", b: "Ticket", trio: "IMAX" }
+        - { a: "Credit", b: "Scene", trio: "Post" }
+    - name: "Music Concerts"
+      pairs:
+        - { a: "Rock", b: "Band", trio: "Lead" }
+        - { a: "Set", b: "List", trio: "Encore" }
+        - { a: "Mosh", b: "Pit", trio: "VIP" }
+        - { a: "Light", b: "Stick", trio: "Glowing" }
+    - name: "Streaming Binge"
+      pairs:
+        - { a: "Chill", b: "Night", trio: "Netflix" }
+        - { a: "Season", b: "Finale", trio: "Cliff" }
+        - { a: "Crime", b: "Docu", trio: "True" }
+        - { a: "Dating", b: "Show", trio: "Reality" }
+    - name: "Karaoke Room"
+      pairs:
+        - { a: "Echo", b: "Mic", trio: "Wireless" }
+        - { a: "Song", b: "Book", trio: "Tambourine" }
+        - { a: "Love", b: "Ballad", trio: "Power" }
+        - { a: "Duet", b: "Song", trio: "Group" }
+    - name: "Detective & Mystery"
+      pairs:
+        - { a: "Finger", b: "Print", trio: "Magnifying" }
+        - { a: "Sherlock", b: "Holmes", trio: "Secret" }
+        - { a: "James", b: "Bond", trio: "Double" }
+        - { a: "Secret", b: "Agent", trio: "Top" }
+    - name: "Fantasy Quest"
+      pairs:
+        - { a: "Dice", b: "Roll", trio: "Twenty" }
+        - { a: "Dragon", b: "Lair", trio: "Fire" }
+        - { a: "One", b: "Ring", trio: "Precious" }
+        - { a: "Bow", b: "Arrow", trio: "Elven" }
+    - name: "Party Card Games"
+      pairs:
+        - { a: "Uno", b: "Card", trio: "Reverse" }
+        - { a: "Kit", b: "Tens", trio: "Exploding" }
+        - { a: "Were", b: "Wolf", trio: "Secret" }
+        - { a: "Word", b: "Names", trio: "Code" }
+    - name: "Toy Box Nostalgia"
+      pairs:
+        - { a: "Lego", b: "Brick", trio: "Plastic" }
+        - { a: "Puzzle", b: "Cube", trio: "Rubik" }
+        - { a: "Pop", b: "Mart", trio: "Blind" }
+        - { a: "Tama", b: "Gotchi", trio: "Digital" }
+    - name: "Anime & Manga"
+      pairs:
+        - { a: "One", b: "Piece", trio: "StrawHat" }
+        - { a: "Dragon", b: "Ball", trio: "Hidden" }
+        - { a: "To", b: "Toro", trio: "Neighbor" }
+        - { a: "Demon", b: "Slayer", trio: "Spirited" }
+    - name: "Sports Arena"
+      pairs:
+        - { a: "Penalty", b: "Kick", trio: "Premier" }
+        - { a: "Cup", b: "Final", trio: "World" }
+        - { a: "Match", b: "Point", trio: "GrandSlam" }
+        - { a: "Slam", b: "Dunk", trio: "ThreePoint" }
+    - name: "Formula Racing"
+      pairs:
+        - { a: "Pit", b: "Stop", trio: "Pole" }
+        - { a: "Safety", b: "Car", trio: "Checkered" }
+        - { a: "Lap", b: "Time", trio: "Fastest" }
+        - { a: "Trophy", b: "Cup", trio: "Champagne" }
+    - name: "Escape Room & Puzzles"
+      pairs:
+        - { a: "Secret", b: "Code", trio: "Padlock" }
+        - { a: "Escape", b: "Room", trio: "Hidden" }
+        - { a: "Cross", b: "Word", trio: "Jigsaw" }
+        - { a: "Mind", b: "Game", trio: "Riddle" }
+    - name: "Magic & Illusion"
+      pairs:
+        - { a: "Card", b: "Trick", trio: "Ace" }
+        - { a: "White", b: "Rabbit", trio: "TopHat" }
+        - { a: "Magic", b: "Mirror", trio: "Smoke" }
+        - { a: "Illu", b: "Sion", trio: "Optical" }
+    - name: "Award Show Night"
+      pairs:
+        - { a: "Oscar", b: "Trophy", trio: "Golden" }
+        - { a: "Red", b: "Carpet", trio: "VIP" }
+        - { a: "Ova", b: "Tion", trio: "Standing" }
+        - { a: "Picture", b: "Winner", trio: "Best" }
+- id: pack5
+  name: "Everyday Office, Coffee & Work-Life"
+  tribes:
+    - name: "Specialty Coffee Run"
+      pairs:
+        - { a: "Oat", b: "Latte", trio: "Iced" }
+        - { a: "Flat", b: "White", trio: "Double" }
+        - { a: "Matcha", b: "Latte", trio: "Ceremonial" }
+        - { a: "Cold", b: "Brew", trio: "Nitro" }
+    - name: "Workshop & Brainstorm"
+      pairs:
+        - { a: "Post", b: "It", trio: "Sticky" }
+        - { a: "White", b: "Board", trio: "DryErase" }
+        - { a: "Brain", b: "Storm", trio: "Mind" }
+        - { a: "Marker", b: "Pen", trio: "Flip" }
+    - name: "Email Inbox Life"
+      pairs:
+        - { a: "Warm", b: "Regards", trio: "Kind" }
+        - { a: "Last", b: "Email", trio: "PerMy" }
+        - { a: "All", b: "Thread", trio: "Reply" }
+        - { a: "Office", b: "AutoReply", trio: "OutOf" }
+    - name: "Meeting Room Banter"
+      pairs:
+        - { a: "Sync", b: "Up", trio: "Quick" }
+        - { a: "Next", b: "Steps", trio: "Action" }
+        - { a: "Touch", b: "Base", trio: "Circle" }
+        - { a: "Hanging", b: "Fruit", trio: "Low" }
+    - name: "Project Management"
+      pairs:
+        - { a: "Mile", b: "Stone", trio: "Key" }
+        - { a: "Road", b: "Map", trio: "Gantt" }
+        - { a: "Stand", b: "Up", trio: "Daily" }
+        - { a: "Back", b: "Log", trio: "Sprint" }
+    - name: "Office Pantry"
+      pairs:
+        - { a: "Cup", b: "Noodles", trio: "Instant" }
+        - { a: "Cookie", b: "Jar", trio: "Biscuit" }
+        - { a: "Water", b: "Dispenser", trio: "Hot" }
+        - { a: "Tea", b: "Bag", trio: "Pantry" }
+    - name: "Stationery & Desk"
+      pairs:
+        - { a: "Stapler", b: "Pin", trio: "Heavy" }
+        - { a: "Paper", b: "Clip", trio: "Binder" }
+        - { a: "Note", b: "Book", trio: "Spiral" }
+        - { a: "High", b: "Lighter", trio: "Yellow" }
+    - name: "Commute & Rush Hour"
+      pairs:
+        - { a: "Staff", b: "Pass", trio: "Lanyard" }
+        - { a: "Turn", b: "Stile", trio: "Lobby" }
+        - { a: "Ground", b: "Floor", trio: "Lift" }
+        - { a: "Rush", b: "Hour", trio: "Peak" }
+    - name: "Presentation Day"
+      pairs:
+        - { a: "Slide", b: "Deck", trio: "Keynote" }
+        - { a: "Clicker", b: "Pointer", trio: "Laser" }
+        - { a: "Lapel", b: "Mic", trio: "Podium" }
+        - { a: "Town", b: "Hall", trio: "QandA" }
+    - name: "Team Offsite & Bonding"
+      pairs:
+        - { a: "Ice", b: "Breaker", trio: "Team" }
+        - { a: "Photo", b: "Booth", trio: "Group" }
+        - { a: "Draw", b: "Prize", trio: "Lucky" }
+        - { a: "Hoodie", b: "Swag", trio: "Company" }
+    - name: "Work From Home"
+      pairs:
+        - { a: "Ergo", b: "Chair", trio: "Standing" }
+        - { a: "Sweat", b: "Pants", trio: "Pajama" }
+        - { a: "Parcel", b: "Delivery", trio: "Doorbell" }
+        - { a: "Food", b: "Delivery", trio: "Lunch" }
+    - name: "Payday & Perks"
+      pairs:
+        - { a: "Pay", b: "Slip", trio: "Direct" }
+        - { a: "Performance", b: "Bonus", trio: "YearEnd" }
+        - { a: "Annual", b: "Leave", trio: "Approved" }
+        - { a: "Expense", b: "Claim", trio: "Taxi" }
+    - name: "Lunch Hour Crowd"
+      pairs:
+        - { a: "Tissue", b: "Packet", trio: "Chope" }
+        - { a: "Bento", b: "Box", trio: "Takeaway" }
+        - { a: "Coma", b: "Nap", trio: "Food" }
+        - { a: "Boba", b: "Tea", trio: "Bubble" }
+    - name: "Client Pitch & Sales"
+      pairs:
+        - { a: "Term", b: "Sheet", trio: "Signed" }
+        - { a: "Name", b: "Card", trio: "Business" }
+        - { a: "Catch", b: "Up", trio: "Coffee" }
+        - { a: "Partner", b: "Ship", trio: "WinWin" }
+    - name: "Finance & Budgeting"
+      pairs:
+        - { a: "Profit", b: "Margin", trio: "Bottom" }
+        - { a: "Quarter", b: "Report", trio: "Fiscal" }
+        - { a: "Invoice", b: "Order", trio: "Purchase" }
+        - { a: "Budget", b: "Cut", trio: "Cost" }
+    - name: "HR & Culture"
+      pairs:
+        - { a: "Welcome", b: "Kit", trio: "FirstDay" }
+        - { a: "Mentor", b: "Ship", trio: "Buddy" }
+        - { a: "Health", b: "Day", trio: "Mental" }
+        - { a: "Kudos", b: "Shoutout", trio: "TownHall" }
+    - name: "IT Helpdesk Moments"
+      pairs:
+        - { a: "Reboot", b: "Now", trio: "HaveYou" }
+        - { a: "Help", b: "Desk", trio: "Ticket" }
+        - { a: "Account", b: "Reset", trio: "Locked" }
+        - { a: "VPN", b: "Token", trio: "Expired" }
+    - name: "Friday TGIF Wind-Down"
+      pairs:
+        - { a: "Hour", b: "Pint", trio: "Happy" }
+        - { a: "Pizza", b: "Party", trio: "Team" }
+        - { a: "Slack", b: "Status", trio: "OutOf" }
+        - { a: "Week", b: "End", trio: "Long" }
+    - name: "Goals & OKRs"
+      pairs:
+        - { a: "Star", b: "Goal", trio: "North" }
+        - { a: "Result", b: "Metric", trio: "Key" }
+        - { a: "Peer", b: "Review", trio: "Self" }
+        - { a: "Growth", b: "Plan", trio: "Career" }
+    - name: "Office Archetypes"
+      pairs:
+        - { a: "Vibe", b: "Officer", trio: "Chief" }
+        - { a: "Pantry", b: "Raider", trio: "Snack" }
+        - { a: "Browser", b: "Tabs", trio: "Twenty" }
+        - { a: "Loud", b: "Typer", trio: "Mechanical" }

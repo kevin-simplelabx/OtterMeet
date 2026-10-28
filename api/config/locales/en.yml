@@ -1,0 +1,57 @@
+# Validation messages in the OtterMeet voice: friendly, and always say what to do next.
+# The API returns the first full message (attribute name + message) to the web app as-is.
+en:
+  activerecord:
+    attributes:
+      account:
+        name: "Your name"
+        email: "That email"
+        password: "Your password"
+      participant:
+        nickname: "That nickname"
+        avatar_icon: "That avatar"
+      session:
+        title: "The session title"
+      timeline_block:
+        title: "Every block"
+        block_type: "That block type"
+        duration_estimate_sec: "The block length"
+      qna_question:
+        content: "Your question"
+    errors:
+      models:
+        account:
+          attributes:
+            name:
+              blank: "can’t be empty. What should we call you?"
+            email:
+              blank: "can’t be empty. We need it to log you back in."
+              invalid: "doesn’t look quite right. Check for typos?"
+            password:
+              too_short: "needs at least %{count} characters."
+              too_long: "is a little too long (keep it under %{count} characters)."
+        participant:
+          attributes:
+            nickname:
+              blank: "can’t be empty. Pick something fun."
+              too_long: "is a bit long. Keep it under %{count} characters."
+            avatar_icon:
+              inclusion: "isn’t one of ours. Pick one from the list."
+        session:
+          attributes:
+            title:
+              blank: "can’t be empty. Give your session a name."
+              too_long: "is a bit long. Keep it under %{count} characters."
+        timeline_block:
+          attributes:
+            title:
+              blank: "needs a title."
+            duration_estimate_sec:
+              not_a_number: "should be a number of minutes."
+              not_an_integer: "should be a whole number of minutes."
+              in: "should be between 0 and 240 minutes."
+        qna_question:
+          attributes:
+            content:
+              blank: "is empty. What would you like to ask?"
+              too_long: "is a bit long. Keep it under %{count} characters."

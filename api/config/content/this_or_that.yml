@@ -1,0 +1,101 @@
+# This or That question bank: the 100 dilemmas from the OtterMeet master spec, section 5.
+- { topic: "Text reaction", a: "Passive-Aggressive Thumbs Up", b: "Normal Efficient Ack" }
+- { topic: "Group chats", a: "Ghost & Exit Silently", b: "Announce Dramatic Exit" }
+- { topic: "Read receipts", a: "Keep ON (Total Transparency)", b: "Turn OFF (Peace of Mind)" }
+- { topic: "Voice notes", a: "Ban Them Completely", b: "Listen at 2x Speed" }
+- { topic: "Group dinners", a: "Split Equally Across All", b: "Itemized Dollar Breakdown" }
+- { topic: "Tipping in non-tipping countries", a: "Mandatory Generosity", b: "Never Tip / Don't Ruin Culture" }
+- { topic: "Elevator courtesy", a: "Hold Door for Runner", b: "Spam Door Close Button" }
+- { topic: "Economy seat reclining", a: "My Absolute Right", b: "Inconsiderate Menace" }
+- { topic: "Babies on long-haul flights", a: "Parents Deserve Travel", b: "Soundproof Family Zones" }
+- { topic: "Home shoes", a: "Bare Feet / House Slippers", b: "Guests Keep Shoes On" }
+- { topic: "Splitting on first date", a: "50/50 Split", b: "Inviter Pays in Full" }
+- { topic: "Replying to messages", a: "Instant Reply / Anxious", b: "Leave on Unread for 3 Days" }
+- { topic: "Social media", a: "Post Everything in Stories", b: "Ghost Profile / 0 Posts" }
+- { topic: "Public transit phone calls", a: "Speakerphone in Public", b: "Texting Only / Zero Noise" }
+- { topic: "Birthday wishes", a: "Text in Group Chat", b: "Personal 1-on-1 Call" }
+- { topic: "Unannounced drop-ins", a: "Love Spontaneous Visits", b: "Panic / Refuse to Open Door" }
+- { topic: "Borrowing money from friends", a: "Strict Contract & Transfer", b: "Never Mix Money and Friends" }
+- { topic: "Sharing passwords", a: "Share All Accounts with Partner", b: "Keep Complete Digital Privacy" }
+- { topic: "Re-gifting gifts", a: "Practical Recycling", b: "Treason to the Giver" }
+- { topic: "Returning shopping carts", a: "Civic Duty", b: "Leave Next to Car" }
+- { topic: "Taking last bite of shared food", a: "Eat It Without Guilt", b: "Stare at It Until Cold" }
+- { topic: "Attending weddings", a: "Cash Ang Bao / Red Packet Only", b: "Thoughtful Gift Registry" }
+- { topic: "Telling a friend about broccoli in teeth", a: "Immediate Public Callout", b: "Stay Silent to Avoid Embarrassment" }
+- { topic: "Talking to taxi / Grab drivers", a: "Deep Life Conversations", b: "AirPods In / Silent Commute" }
+- { topic: "Being 15 minutes late", a: "Normal Social Buffer", b: "Disrespectful Time Theft" }
+- { topic: "Corporate emails", a: "\"Per my last email...\" (Savage)", b: "Sugarcoat Everything (Polite)" }
+- { topic: "Zoom policy", a: "Mandatory Camera ON", b: "Camera OFF (Preserve Energy)" }
+- { topic: "Meeting catchphrase", a: "\"Let's circle back offline\"", b: "\"Address it right here right now\"" }
+- { topic: "Office pantry microwave", a: "Reheat Seafood / Fish", b: "Instant Dismissal Offense" }
+- { topic: "Late-night Slack", a: "Send Messages at 11 PM", b: "Strict Scheduled Send 9 AM" }
+- { topic: "Taking credit", a: "Claim Executive Ownership", b: "Credit Every Intern Publicly" }
+- { topic: "Promotions", a: "Loud Self-Promoter", b: "Quiet Efficient Operator" }
+- { topic: "Quick syncs", a: "\"Hop on a quick huddle\"", b: "\"Write a 2-line async message\"" }
+- { topic: "Working model", a: "100% Remote Forever", b: "5 Days In-Office Culture" }
+- { topic: "Colleague typos", a: "Correct in Public Channel", b: "Send Private DM Hint" }
+- { topic: "Feedback", a: "Brutal Radical Candor", b: "Compliment Sandwich" }
+- { topic: "Calendar blocking", a: "Block Fake Focus Time", b: "Leave Calendar Open" }
+- { topic: "Casual Friday", a: "Dress Up Sharp Always", b: "Hoodie, Shorts & Slides" }
+- { topic: "Desk lunch", a: "Eat Over Keyboard", b: "Strict 1-Hour Pantry Break" }
+- { topic: "Happy hour attendance", a: "Mandatory Team Bonding", b: "Leave Promptly at 6:00 PM" }
+- { topic: "Office romance", a: "High-Risk Thrill", b: "Absolute HR Disaster" }
+- { topic: "Salary transparency", a: "Open Spreadsheet for All", b: "Strict Individual Secrecy" }
+- { topic: "Sick days", a: "Take Sick Leave for Gaming", b: "Work Through Mild Fever" }
+- { topic: "Job loyalty", a: "Jump Companies Every 18 Months", b: "Loyal 10-Year Veteran" }
+- { topic: "Corporate LinkedIn", a: "Inspirational Humble-Brags", b: "Delete Account Completely" }
+- { topic: "Presentations", a: "30 Text-Dense Slides", b: "3 Big Image Slides" }
+- { topic: "Brainstorming", a: "Loud Sticky-Note Shouting", b: "Silent Document Writing" }
+- { topic: "Expense reports", a: "Claim Every $3 Coffee", b: "Only Submit Large Invoices" }
+- { topic: "Boss on social media", a: "Accept Friend Request", b: "Block Immediately" }
+- { topic: "Exit interviews", a: "Spill the Brutal Truth", b: "Smile and Say \"Great Culture\"" }
+- { topic: "Pizza topping", a: "Pineapple Belongs on Pizza", b: "Culinary Treason" }
+- { topic: "Steak preference", a: "Rare / Medium-Rare", b: "Well-Done with Sauce" }
+- { topic: "Durian debate", a: "Fragrant King of Fruits", b: "Toxic Biohazard Waste" }
+- { topic: "French fries eating", a: "Squeeze Sauce All Over", b: "Dip Neatly on the Side" }
+- { topic: "Cereal bowl", a: "Cereal First, Then Milk", b: "Milk First, Then Cereal" }
+- { topic: "Fast food drink", a: "No Ice (Maximum Soda)", b: "Full Ice (Extra Chilled)" }
+- { topic: "High-end pasta", a: "Break Spaghetti Before Boiling", b: "Keep Long and Slurp" }
+- { topic: "Table etiquette", a: "Wipe Cutlery with Tissue", b: "Trust Restaurant Dishwasher" }
+- { topic: "Ice cubes", a: "Put Ice Cubes in Red Wine", b: "Warm Room-Temperature Only" }
+- { topic: "Floor drop rule", a: "5-Second Rule Still Valid", b: "Straight into the Bin" }
+- { topic: "Fried chicken piece", a: "Crispy Chicken Skin First", b: "Save Skin for Last Bite" }
+- { topic: "Condiment usage", a: "Drown Everything in Chilli", b: "Taste Original Flavor" }
+- { topic: "Hawker seating", a: "Chope with Tissue Packet", b: "Wait Standing Behind Eaters" }
+- { topic: "Coffee order", a: "Black Unsweetened (Kopi O Kosong)", b: "Syrupy Caramel Frappuccino" }
+- { topic: "Midnight supper", a: "Instant Noodles with Egg", b: "Order Midnight Delivery Feast" }
+- { topic: "Eating crust", a: "Eat Bread / Pizza Crusts", b: "Discard All Crusts" }
+- { topic: "Dim Sum sharing", a: "Split Last Dumpling in Half", b: "One Winner Takes All" }
+- { topic: "Spicy food threshold", a: "Sweating Mala Challenge", b: "Zero Spice / Clear Soup" }
+- { topic: "Meal priority", a: "Live to Eat (Foodie Tours)", b: "Eat to Live (Meal Prep Protein)" }
+- { topic: "Dessert timing", a: "Sweet Treats Before Dinner", b: "Strict Post-Meal Dessert" }
+- { topic: "Water temperature", a: "Iced Water in Winter", b: "Lukewarm Water Always" }
+- { topic: "Food photography", a: "10 Angles Before Eating", b: "Eat Immediately While Hot" }
+- { topic: "Buffet strategy", a: "Pile High with Seafood Only", b: "Balanced Small Plates" }
+- { topic: "Beer vs Wine", a: "Crisp Cold Draft Beer", b: "Complex Aged Wine" }
+- { topic: "Midnight snacking", a: "Raid Pantry at 2 AM", b: "Strict Intermittent Fasting" }
+- { topic: "Partner's phone", a: "Check Phone if Suspicious", b: "Absolute Privacy Boundary" }
+- { topic: "Staying friends with ex", a: "Mature Adult Behavior", b: "Toxic Unresolved Baggage" }
+- { topic: "Resume embellishment", a: "Exaggerate for the Win", b: "100% Verified Truth" }
+- { topic: "Wedding invites", a: "Strict Child-Free Rule", b: "Kids Welcome Everywhere" }
+- { topic: "Friend's wedding choice", a: "Intervene if Bad Match", b: "Stay Silent and Support" }
+- { topic: "Superpower choice", a: "Mind Reading (High Drama)", b: "Invisibility (Pure Chaos)" }
+- { topic: "Life trajectory", a: "Retire at 35 in Tiny Cabin", b: "Build Global Empire at 65" }
+- { topic: "Travel style", a: "Every Minute Itinerary", b: "Wander with Zero Plans" }
+- { topic: "Winning games", a: "Win at All Costs (Sore Winner)", b: "\"It's Just for Fun\"" }
+- { topic: "Pet royalty", a: "Dogs Rule the World", b: "Cats Are Our Overlords" }
+- { topic: "Lottery win", a: "Tell Family Immediately", b: "Keep 100% Secret Forever" }
+- { topic: "Aging philosophy", a: "Botox & Anti-Aging Tech", b: "Embrace Wrinkles Naturally" }
+- { topic: "Housing choice", a: "Penthouse in Busy CBD", b: "Isolated House in Woods" }
+- { topic: "Conflict style", a: "Direct Heated Confrontation", b: "Silent Cold Treatment" }
+- { topic: "Decision making", a: "Cold Calculated Logic", b: "100% Emotional Intuition" }
+- { topic: "Money management", a: "YOLO Luxury Experiences", b: "Aggressive Index Fund Saving" }
+- { topic: "Truth vs Kindness", a: "Brutal Honest Truth", b: "Comforting White Lie" }
+- { topic: "Personal space", a: "Huggers Upon Greeting", b: "Firm Distant Handshake" }
+- { topic: "Morning alarm", a: "Up on 1st Beep at 5 AM", b: "Hit Snooze 7 Times" }
+- { topic: "Fitness habits", a: "Extreme Marathon / CrossFit", b: "Comfortable Couch Walk" }
+- { topic: "Daily attire", a: "Steve Jobs Uniform Every Day", b: "Curated Fashion Wardrobe" }
+- { topic: "Screen time", a: "Digital Detox Camp", b: "14 Hours Multi-Screen Doomscroll" }
+- { topic: "Weather preference", a: "Gloomy Rainy Thunderstorm", b: "Bright Blazing Sun" }
+- { topic: "Road rage", a: "Honk and Gesture", b: "Zen Breathing Meditation" }
+- { topic: "Future mindset", a: "Optimistic Tech Solves All", b: "Pragmatic Dystopian Realist" }
