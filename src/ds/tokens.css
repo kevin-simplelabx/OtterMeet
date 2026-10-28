@@ -1,0 +1,127 @@
+/* OtterMeet tokens and type styles, transcribed from the OtterMeet design system's tokens.json (v1).
+   Light is the default; any element with data-theme="dark" (or "light") switches the roles beneath it. */
+
+:root {
+  /* Brand colors: fixed in every theme */
+  --river-trench: #0d1b2a;
+  --stream-blue: #1d70b8;
+  --pebble-cream: #faf7f2;
+  --kelp-amber: #e58a13;
+  --otter-belly: #e8d8c3;
+  --moss-green: #2d6a4f;
+  --driftwood: #6b4e3d;
+
+  /* Families */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+  --pebble-tl: 24px;
+  --pebble-tr: 20px;
+  --pebble-br: 28px;
+  --pebble-bl: 18px;
+
+  /* Stroke */
+  --stroke-hairline: 1px;
+  --stroke-card: 1.5px;
+  --stroke-control: 2px;
+  --stroke-line-art: 2.5px;
+}
+
+/* Light theme roles */
+:root, [data-theme="light"] {
+  --surface: #faf7f2;
+  --surface-card: #ffffff;
+  --surface-fill: #e8d8c3;
+  --border: #e8d8c3;
+  --border-strong: #957d69;
+  --ink: #0d1b2a;
+  --ink-muted: #6b4e3d;
+  --accent: #1d70b8;
+  --accent-soft: #eaf2fa;
+  --on-accent: #ffffff;
+  --action: #e58a13;
+  --on-action: #0d1b2a;
+  --action-soft: #fcebd3;
+  --success: #2d6a4f;
+  --success-soft: #e2efe7;
+  --on-success: #ffffff;
+  --wave-line: #1d70b84d;
+  --ripple: #1d70b829;
+  --shadow-ink: #0d1b2a1f;
+  --scrim: #0d1b2a73;
+  --shadow-card: 0 1px 2px #0d1b2a0f, 0 4px 12px #6b4e3d14;
+  --shadow-pebble: 0 3px 0 #0d1b2a2e, 0 6px 14px #0d1b2a1a;
+  --shadow-pebble-pressed: 0 1px 0 #0d1b2a2e, inset 0 2px 4px #0d1b2a26;
+  --shadow-float: 0 4px 10px #6b4e3d1a, 0 16px 36px -8px #0d1b2a38;
+  --focus-ring: 0 0 0 2px #faf7f2, 0 0 0 4px #1d70b8;
+}
+
+/* Dark theme roles */
+[data-theme="dark"] {
+  --surface: #0d1b2a;
+  --surface-card: #14263a;
+  --surface-fill: #1e344b;
+  --border: #2b4560;
+  --border-strong: #5f7a96;
+  --ink: #faf7f2;
+  --ink-muted: #e8d8c3;
+  --accent: #5aa6eb;
+  --accent-soft: #15365a;
+  --on-accent: #0d1b2a;
+  --action: #e58a13;
+  --on-action: #0d1b2a;
+  --action-soft: #3a2a12;
+  --success: #6cc497;
+  --success-soft: #143528;
+  --on-success: #0d1b2a;
+  --wave-line: #5aa6eb4d;
+  --ripple: #5aa6eb33;
+  --shadow-ink: #00000099;
+  --scrim: #000000a6;
+  --shadow-card: 0 1px 2px #00000066, 0 6px 16px #00000059;
+  --shadow-pebble: 0 3px 0 #00000080, 0 6px 14px #00000059;
+  --shadow-pebble-pressed: 0 1px 0 #00000080, inset 0 2px 4px #00000073;
+  --shadow-float: 0 16px 36px -8px #000000b3;
+  --focus-ring: 0 0 0 2px #0d1b2a, 0 0 0 4px #5aa6eb;
+}
+
+/* Type styles: Display (Fraunces, SOFT 100) */
+.hero { font-family: var(--font-display); font-size: 64px; line-height: 64px; font-weight: 600; letter-spacing: -0.02em; }
+.display { font-family: var(--font-display); font-size: 44px; line-height: 48px; font-weight: 600; letter-spacing: -0.015em; }
+.pull-quote { font-family: var(--font-display); font-size: 28px; line-height: 36px; font-weight: 400; font-style: italic; }
+
+/* Type styles: Interface (Plus Jakarta Sans) */
+.heading-1 { font-family: var(--font-sans); font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.01em; }
+.heading-2 { font-family: var(--font-sans); font-size: 28px; line-height: 36px; font-weight: 700; }
+.heading-3 { font-family: var(--font-sans); font-size: 22px; line-height: 30px; font-weight: 700; }
+.title { font-family: var(--font-sans); font-size: 18px; line-height: 26px; font-weight: 700; }
+.label { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 700; }
+.tag { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 700; letter-spacing: 0.01em; }
+.eyebrow { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Type styles: Text (Inter) */
+.body-lg { font-family: var(--font-text); font-size: 18px; line-height: 28px; font-weight: 400; }
+.body { font-family: var(--font-text); font-size: 16px; line-height: 24px; font-weight: 400; }
+.body-sm { font-family: var(--font-text); font-size: 14px; line-height: 20px; font-weight: 400; }
+.meta { font-family: var(--font-text); font-size: 13px; line-height: 18px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.price { font-family: var(--font-text); font-size: 16px; line-height: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
