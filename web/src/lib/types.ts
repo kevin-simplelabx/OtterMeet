@@ -26,7 +26,7 @@ export interface LiveSession {
   room_code: string;
   status: SessionStatus;
   active_block_index: number;
-  settings: { allow_emoji_shower: boolean; collect_game_feedback: boolean; max_participants: number };
+  settings: { allow_emoji_shower: boolean; collect_game_feedback: boolean; max_participants: number; groups?: Group[] };
   created_at: string;
   updated_at: string;
   blocks: TimelineBlockItem[];
@@ -60,7 +60,7 @@ export type Activity =
       shapes: string[]; seconds: number; remaining_ms?: number; correct?: number; results?: QuizTally; leaderboard?: LeaderboardEntry[] }
   | { kind: 'SPLIT_WORDS'; phase: 'pairs' | 'quads' | 'squads'; prompt: string; tribes: TribeSummary[] | null }
   | { kind: 'IMPOSTER'; round: number; rounds: number; phase: 'words' | 'vote' | 'reveal'; mode: 'blank' | 'chameleon';
-      results?: ImposterResult[]; last_breath_ms?: number };
+      results?: ImposterResult[]; last_breath_ms?: number; seating?: ImposterSeat[] };
 
 export interface QuizTally { question: number; answered: number; counts: number[] }
 export interface LeaderboardEntry { rank: number; nickname: string; avatar: string; score: number }
@@ -71,7 +71,11 @@ export interface ImposterResult {
   number: number; name: string; clue: string; word: string | null; caught: boolean; votes: number; players: number;
   imposter: { id: string; nickname: string; avatar: string } | null; breath: 'stolen' | 'missed' | 'pending' | null;
 }
-export interface ImposterTally { round: number; phase: string; players: number; votes_in: number; tables: number; results?: ImposterResult[] }
+export interface ImposterSeat { number: number; name: string; players: { nickname: string; avatar: string; order: number }[] }
+export interface ImposterTally {
+  round: number; phase: string; players: number; votes_in: number; tables: number; results?: ImposterResult[];
+  unseated: { id: string; nickname: string; avatar: string }[]; seating: ImposterSeat[];
+}
 
 export interface SurveyQuestion { id: string; kind: 'rating' | 'chips' | 'text'; prompt: string; options?: string[] }
 
@@ -111,7 +115,11 @@ export interface Participant {
   avatar: string;
   total_score: number;
   is_connected: boolean;
+  group?: string | null;
 }
+
+/** A table / group the host set up for the session. `code` is what people pick on their phone. */
+export interface Group { code: string; name: string }
 
 export interface Roster {
   count: number;

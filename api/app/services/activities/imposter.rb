@@ -42,7 +42,7 @@ module Activities
     # --- dealing ---
 
     def deal!(session, block, round)
-      tables = round.zero? ? first_tables(session, block) : repeat_tables(block)
+      tables = round.zero? ? first_tables(session, block) : repeat_tables(session, block)
       return if tables.empty?
       tribes = Activities.pack(config(block)[:pack])[:tribes].shuffle
       last_imposters = round.zero? ? [] : squads(block, round - 1).flat_map(&:squad_memberships).select { |m| m.assigned_role == "IMPOSTER" }.map(&:participant_id)
@@ -62,25 +62,75 @@ module Activities
       end
     end
 
-    # Tribes from the latest Split Words block before this one, else tables of about 6.
+    # The host's own groups when set up, else tribes from the latest Split Words block, else tables of about 6.
     def first_tables(session, block)
+      return group_tables(session) if session.groups.any?
       here = session.participants.where(is_connected: true).to_a
       split = session.timeline_blocks.select { |b| b.block_type == "SPLIT_WORDS" && b.position < block.position }.max_by(&:position)
       if split
         tribes = Squad.where(timeline_block: split, round: 0).includes(squad_memberships: :participant).order(:squad_number).map do |s|
           [s.master_tribe_name, s.squad_memberships.map(&:participant) & here]
         end.reject { |_, ms| ms.size < 3 }
-        seated = tribes.flat_map(&:last)
-        rest = here - seated
-        tribes.min_by { |_, ms| ms.size }&.last&.concat(rest) if rest.any? && tribes.any?
-        return tribes if tribes.any?
+        return seat_newcomers(tribes, (here - tribes.flat_map(&:last)).shuffle) if tribes.any?
       end
       return [] if here.size < 3
       SplitWords.split_evenly(here.shuffle, (here.size / TABLE_SIZE.to_f).ceil).each_with_index.map { |ms, i| ["Table #{i + 1}", ms] }
     end
 
-    def repeat_tables(block)
-      squads(block, 0).map { |s| [s.master_tribe_name, s.squad_memberships.map(&:participant).select(&:is_connected)] }.reject { |_, ms| ms.size < 3 }
+    # Later rounds keep the same tables, minus people who left, plus anyone who arrived since.
+    def repeat_tables(session, block)
+      return group_tables(session) if session.groups.any?
+      tables = squads(block, 0).map { |s| [s.master_tribe_name, s.squad_memberships.map(&:participant).select(&:is_connected)] }
+      here = session.participants.where(is_connected: true).to_a
+      seat_newcomers(tables, (here - tables.flat_map(&:last)).shuffle).reject { |_, ms| ms.size < 3 }
+    end
+
+    # One table per host group, read fresh each round so table changes count. A group needs 3 people here to
+    # play on its own; smaller groups and people without a group fill the other tables.
+    def group_tables(session)
+      here = session.participants.where(is_connected: true).to_a
+      by_code = here.group_by(&:group_code)
+      tables = session.groups.map { |g| [g["name"], by_code[g["code"]] || []] }
+      playing = tables.select { |_, ms| ms.size >= 3 }
+      return SplitWords.split_evenly(here.shuffle, (here.size / TABLE_SIZE.to_f).ceil).each_with_index.map { |ms, i| ["Table #{i + 1}", ms] } if playing.empty? && here.size >= 3
+      seat_newcomers(playing, (here - playing.flat_map(&:last)).shuffle)
+    end
+
+    # Newcomers fill the smallest tables; a group of 3+ gets its own table once every table is full.
+    def seat_newcomers(tables, newcomers)
+      newcomers = newcomers.dup
+      while newcomers.size >= 3 && tables.all? { |_, ms| ms.size >= TABLE_SIZE }
+        tables << ["Table #{tables.size + 1}", newcomers.shift(TABLE_SIZE)]
+      end
+      newcomers.each { |p| tables.min_by { |_, ms| ms.size }.last << p } if tables.any?
+      tables
+    end
+
+    # Rescue (cockpit button / S key) while cards are being read: latecomers join the smallest table as
+    # civilians with that table's word, speaking last. Returns the people seated.
+    def rescue!(session, block, step)
+      round, phase = current(step)
+      raise ArgumentError, "Latecomers get seated when the next round starts." unless phase == "words"
+      unless Squad.exists?(timeline_block: block, round:)
+        deal!(session, block, round)
+        return session.participants.where(is_connected: true).to_a
+      end
+      tables = squads(block, round).to_a
+      seated = tables.flat_map { |s| s.squad_memberships.map(&:participant_id) }
+      newcomers = session.participants.where(is_connected: true).where.not(id: seated).to_a
+      newcomers.each do |person|
+        own = session.group_named(person.group_code)&.dig("name")
+        squad = tables.find { |s| own && s.master_tribe_name == own } || tables.min_by { |s| s.squad_memberships.reload.size }
+        word = squad.squad_memberships.find { |m| m.assigned_role == "CIVILIAN" }&.assigned_word
+        squad.squad_memberships.create!(participant: person, assigned_word: word, assigned_role: "CIVILIAN",
+                                        speaking_order: squad.squad_memberships.maximum(:speaking_order).to_i + 1)
+      end
+      newcomers
+    end
+
+    def unseated(session, block, round)
+      seated = SquadMembership.joins(:squad).where(squads: { timeline_block_id: block.id, round: }).select(:participant_id)
+      session.participants.where(is_connected: true).where.not(id: seated)
     end
 
     # --- results ---
@@ -156,15 +206,25 @@ module Activities
     def view(block, step)
       round, phase = current(step)
       base = { kind: "IMPOSTER", round:, rounds: config(block)[:rounds], phase:, mode: config(block)[:mode] }
-      return base unless phase == "reveal"
+      return base.merge(seating: seating(block, round)) unless phase == "reveal"
       remaining = [revealed_at(block, round).to_i + LAST_BREATH_MS - now_ms, 0].max
       base.merge(results: results(block, round), last_breath_ms: remaining)
+    end
+
+    # Who sits where, in speaking order. Shown on the stage so every table can find itself.
+    def seating(block, round)
+      squads(block, round).map do |s|
+        { number: s.squad_number, name: s.master_tribe_name,
+          players: s.squad_memberships.sort_by(&:speaking_order).map { |m| { nickname: m.participant.nickname, avatar: m.participant.avatar_icon, order: m.speaking_order } } }
+      end
     end
 
     def tally(block, step)
       round, phase = current(step)
       players = squads(block, round).sum { |s| s.squad_memberships.size }
-      data = { round:, phase:, players:, votes_in: Response.where(timeline_block: block, key: "vote#{round}").count, tables: squads(block, round).size }
+      waiting = unseated(block.session, block, round).map { |p| { id: p.id, nickname: p.nickname, avatar: p.avatar_icon } }
+      data = { round:, phase:, players:, votes_in: Response.where(timeline_block: block, key: "vote#{round}").count, tables: squads(block, round).size,
+               unseated: waiting, seating: seating(block, round) }
       phase == "reveal" ? data.merge(results: results(block, round)) : data
     end
 

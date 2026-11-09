@@ -1,6 +1,20 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "web", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--prefix", "web"], "port": 3000 }
+    { "name": "web", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--prefix", "web"], "port": 3000 },
+    {
+      "name": "web-wsl-ip",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "web"],
+      "port": 3000,
+      "env": { "API_ORIGIN": "http://192.168.116.73:3001" }
+    },
+    {
+      "name": "api",
+      "runtimeExecutable": "wsl",
+      "runtimeArgs": ["-d", "Ubuntu-24.04", "--cd", "C:\\Users\\pk_ti\\Dev\\OtterMeet\\api", "--", "bash", "../scripts/wsl-ruby.sh", "bin/rails", "server", "-b", "0.0.0.0", "-p", "3001"],
+      "port": 3001,
+      "autoPort": false
+    }
   ]
 }

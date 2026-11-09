@@ -22,6 +22,22 @@ class Session < ApplicationRecord
   def live? = status == "LIVE"
   def active_block = timeline_blocks[active_block_index]
 
+  MAX_GROUPS = 60
+
+  # Tables / groups the host set up (often assigned offline, e.g. project teams): [{ "code" => "3", "name" => "Table 3" }].
+  def groups = Array(settings["groups"]).select { |g| g.is_a?(Hash) && g["code"].present? }
+  def group_named(code) = groups.find { |g| g["code"] == code.to_s }
+
+  # Cleans what the portal sends: codes are short and unique, names default to "Table <code>".
+  def self.clean_groups(raw)
+    Array(raw).first(MAX_GROUPS).filter_map do |g|
+      g = g.respond_to?(:to_unsafe_h) ? g.to_unsafe_h : g.to_h
+      code = g["code"].to_s.strip.first(20)
+      next if code.blank?
+      { "code" => code, "name" => g["name"].to_s.strip.first(60).presence || "Table #{code}" }
+    end.uniq { |g| g["code"].downcase }
+  end
+
   def as_json(*)
     { id:, title:, room_code:, status:, active_block_index:, settings:, created_at:, updated_at:,
       blocks: timeline_blocks.map(&:as_json) }

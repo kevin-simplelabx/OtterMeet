@@ -1,0 +1,328 @@
+[
+ {
+  "id": "first",
+  "topic": "Getting started",
+  "title": "Make your first session",
+  "paras": [
+   "Press New Session, give it a name and pick a theme. You start with a Lobby slide, so people have somewhere to land when they join.",
+   "Add slides and games from the library, then press Preview to try it with 2 test phones before the day."
+  ]
+ },
+ {
+  "id": "golive",
+  "topic": "Getting started",
+  "title": "Go live and get your room code",
+  "paras": [
+   "Your 4-letter room code arrives when you open the cockpit and go live, not before, so nobody holds codes they aren’t using.",
+   "The code is yours until the session ends. People join at ottermeet.io/join, or by scanning the QR code on the big screen."
+  ]
+ },
+ {
+  "id": "copy",
+  "topic": "Getting started",
+  "title": "Copy a session for next time",
+  "paras": [
+   "Open the menu on the session’s card and press Duplicate. The copy keeps the slides, theme and settings, and starts with no report."
+  ]
+ },
+ {
+  "id": "slides",
+  "topic": "Building slides",
+  "title": "Add and order slides",
+  "paras": [
+   "Press Add Activity to pick a game or slide from the library. Drag slides to reorder them, or use Slide View to see one at a time.",
+   "Speaker notes stay on your laptop in the cockpit. The room never sees them."
+  ]
+ },
+ {
+  "id": "preview",
+  "topic": "Building slides",
+  "title": "Preview with test phones",
+  "paras": [
+   "Preview runs the whole session on your laptop, with the big screen, the cockpit and 2 test phones. Previews never count towards your host level and never show up in reports."
+  ]
+ },
+ {
+  "id": "theme",
+  "topic": "Building slides",
+  "title": "Themes, title styles and music",
+  "paras": [
+   "The theme sets colours, fonts and backgrounds for every slide. A slide can have its own background or title style if it needs one.",
+   "Title styles are for the big screen. Phones keep their own easy-to-read titles, in the theme colour.",
+   "Every music track is composed for OtterMeet, so it’s cleared to play at any session. Each slide sits at one of 4 music levels."
+  ]
+ },
+ {
+  "id": "cockpit",
+  "topic": "Running the room",
+  "title": "Run the room from the cockpit",
+  "paras": [
+   "The cockpit is your laptop’s view. It shows what’s on stage, what’s next, your speaker notes and how many people are in.",
+   "Press Next to move on. Blackout hides the big screen for a moment."
+  ]
+ },
+ {
+  "id": "keys",
+  "topic": "Running the room",
+  "title": "Keyboard shortcuts",
+  "paras": [
+   "Click the cockpit first. Then → or Space goes to the next step, ← goes back and B is Blackout.",
+   "Keys 1 to 4 set the music level for this slide, and M mutes it. During Q&A, A approves and R rejects the top question."
+  ]
+ },
+ {
+  "id": "signal",
+  "topic": "Running the room",
+  "title": "If a phone or the cockpit loses signal",
+  "paras": [
+   "A phone that loses signal says “Reconnecting” and keeps its answers. When it’s back, nothing is lost.",
+   "If your laptop drops, the room stays on the same slide and phones say “The host is reconnecting.” Next and Previous work again once you’re back."
+  ]
+ },
+ {
+  "id": "remove",
+  "topic": "Running the room",
+  "title": "Remove someone from the room",
+  "paras": [
+   "Press See People next to the room count, find them and press Remove. Their phone says “The host removed you from this session.” and can’t rejoin.",
+   "Changed your mind? Press Let Back In under Removed."
+  ]
+ },
+ {
+  "id": "qna-end",
+  "topic": "Running the room",
+  "title": "Questions at the end of a session",
+  "paras": [
+   "When the session ends, the cockpit shows the questions from the room with Review the Questions, so you can see what people asked and which ones you didn’t get to.",
+   "Questions don’t carry over to your next session. Follow up in the follow-up email, or answer them next time."
+  ]
+ },
+ {
+  "id": "games",
+  "topic": "Each game",
+  "title": "Which game when",
+  "paras": [
+   "Warm up with This or That or a Word Cloud. Split Words gets people moving and talking. Speed Quiz and Imposter suit the middle of the day, when the room has energy.",
+   "End with a Feedback Survey and a Keep in Touch slide, so you have something to follow up with."
+  ]
+ },
+ {
+  "id": "join",
+  "topic": "Phones and joining",
+  "title": "How people join",
+  "paras": [
+   "People scan the QR code on the big screen, or go to ottermeet.io/join and type the room code. They pick a nickname and an avatar, and that’s it. No app, no account.",
+   "If someone joins late, their phone tells them what’s on now."
+  ]
+ },
+ {
+  "id": "full",
+  "topic": "Phones and joining",
+  "title": "When the room is full",
+  "paras": [
+   "Set a room limit in Session Settings. When it’s full, new people wait in line or are turned away, whichever you choose. You can change the limit during the session."
+  ]
+ },
+ {
+  "id": "ev-new",
+  "topic": "Events",
+  "title": "Make an event",
+  "paras": [
+   "Press New Event on the Events tab. Give it a name, a date and times, and where it is: a venue, online or both. Pick who can see it: Public, Unlisted, Company Only or Invite Only.",
+   "It starts as a draft that only you and your co-hosts can see. Fill in Details, the agenda and registration, then press Preview Event Page to see it on a phone and a laptop before you post it."
+  ]
+ },
+ {
+  "id": "ev-tags",
+  "topic": "Events",
+  "title": "Tags and who finds your event",
+  "paras": [
+   "Give a public event up to 3 tags, such as Workshops, Coffee or AI. They show on its card and help people find it.",
+   "Public events go on your organiser page. People who follow you get one email when you post a new one. Unlisted, Company Only and Invite Only events are never listed anywhere."
+  ]
+ },
+ {
+  "id": "ev-guests",
+  "topic": "Events",
+  "title": "Add guests and send invites",
+  "paras": [
+   "In the Guests tab, press Add Guests and paste names and emails, one person per line, or upload a CSV. A third column sets their team, which is where they work.",
+   "Press Send Invites when you’re ready. Nobody gets the same invite twice. To change someone’s team later, open their details, or select several people and use Set the Team."
+  ]
+ },
+ {
+  "id": "ev-groups",
+  "topic": "Events",
+  "title": "Put people in groups",
+  "paras": [
+   "Groups are for the day, such as workshop tables. They’re separate from teams. In the Guests tab, press Make Groups, choose how many, and name them if you like.",
+   "Mix the Teams spreads each team across the groups. Keep Teams Together puts each team in one group. Fill In the Rest only places people without a group. To move people yourself, use the group picker on a guest, or select several and move them together.",
+   "Switch the guest list to By Group to see who’s in each one. In the event’s sessions, the groups become the tables."
+  ]
+ },
+ {
+  "id": "ev-wait",
+  "topic": "Events",
+  "title": "When the event is full",
+  "paras": [
+   "With a waitlist, new RSVPs join it once the event is full. When a place opens, you choose who gets it: Give a Place to anyone on the waitlist, or Give Them to the Next in line.",
+   "Guests never see their place in line."
+  ]
+ },
+ {
+  "id": "ev-day",
+  "topic": "Events",
+  "title": "Check people in on the day",
+  "paras": [
+   "Open the Check In tab. Press Use the Camera and point it at the QR code on a guest’s phone, or search for them by name. Walk-ins can be added and checked in straight away.",
+   "Turn on self check-in to put a QR code at the door: guests scan it and type the email they RSVP’d with. Co-hosts can check people in from their own phones at the same time."
+  ]
+ },
+ {
+  "id": "ev-report",
+  "topic": "Events",
+  "title": "The event report and follow-up",
+  "paras": [
+   "When the event ends, the Report tab shows who was invited, said Going, checked in and took part, plus highlights from its sessions.",
+   "Write one follow-up email for the whole event in Report, then Follow-up. Download PDF makes a one-page summary with no names or answers. Delete Answers After the Event clears dietary and access needs once you’re done."
+  ]
+ },
+ {
+  "id": "ev-org",
+  "topic": "Events",
+  "title": "Your organiser page",
+  "paras": [
+   "Every organisation gets a page at ottermeet.io/@yourname, with your logo, a page image, a short About and your public events. Owners and admins change it with Edit Page on the Events tab.",
+   "Followers are counted, not named. Follower emails are free."
+  ]
+ },
+ {
+  "id": "report",
+  "topic": "Reports",
+  "title": "Read your report",
+  "paras": [
+   "The summary shows who joined, who took part and the highlights. Slides shows what the room did on each one. People shows each person’s answers.",
+   "Reactions don’t count as taking part. Answers, votes and questions do."
+  ]
+ },
+ {
+  "id": "share",
+  "topic": "Reports",
+  "title": "Share a report",
+  "paras": [
+   "Press Share Report for a link you can send. You decide whether people with the link see names and emails. Turn the link off any time."
+  ]
+ },
+ {
+  "id": "erase",
+  "topic": "Reports",
+  "title": "Remove someone’s data",
+  "paras": [
+   "If someone asks you to delete their details, open them in People and press Remove This Person. Their name, email and answers are cleared from the report and its downloads. The totals stay the same."
+  ]
+ },
+ {
+  "id": "passport",
+  "topic": "Passport",
+  "title": "What people keep in their passport",
+  "paras": [
+   "At the end, people can log in to keep a stamp from your session, with anything they earned. They can open their passport any time at ottermeet.io/passport.",
+   "Turn the passport off in Session Settings if a session shouldn’t give stamps."
+  ]
+ },
+ {
+  "id": "pass-del",
+  "topic": "Passport",
+  "title": "Remove a stamp, or your passport",
+  "paras": [
+   "Open your passport and press Remove This Stamp on any stamp. Its rewards go too.",
+   "Delete My Passport removes every stamp, reward and follow. A new passport starts the next time you check in or join a session."
+  ]
+ },
+ {
+  "id": "cohosts",
+  "topic": "Account and team",
+  "title": "Add co-hosts to a session",
+  "paras": [
+   "In Session Settings, under Room, add up to 2 co-hosts: a teammate, or anyone else by email. Co-hosts are free. They can take the controls, approve questions and see the report, but they can’t edit the slides.",
+   "One person has the controls at a time. Anyone else in the cockpit can still approve questions, and can press Take the Controls."
+  ]
+ },
+ {
+  "id": "levels",
+  "topic": "Account and team",
+  "title": "Host levels and pebbles",
+  "paras": [
+   "A session counts towards your host level when 20 or more people join and it runs at least 45 minutes. The first 2 that count each month go towards your next level.",
+   "Smaller sessions of 5 to 19 people can earn a pebble instead."
+  ]
+ },
+ {
+  "id": "otter",
+  "topic": "Account and team",
+  "title": "Dress your otter",
+  "paras": [
+   "Each host level lets you pick something for your otter: fur, headwear, something for the neck or paw, and more. What you pick stays yours, so you can change what it wears any time."
+  ]
+ },
+ {
+  "id": "team",
+  "topic": "Account and team",
+  "title": "Invite your team",
+  "paras": [
+   "Anyone on your team can make and host sessions. Invite teammates from the Team tab. They get an email, pick a password and they’re in."
+  ]
+ },
+ {
+  "id": "roles",
+  "topic": "Account and team",
+  "title": "Owners, admins and hosts",
+  "paras": [
+   "Hosts make and run sessions and events. Admins also invite and remove people, change the company logo and the organiser page, and look after the plan and billing. The owner can do all that, and hand ownership to someone else.",
+   "Change someone’s role with the picker next to their name on the Team tab."
+  ]
+ },
+ {
+  "id": "brand",
+  "topic": "Account and team",
+  "title": "Your company logo",
+  "paras": [
+   "Owners and admins add the company logo in Account, on the Team tab, with a version for light and dark backgrounds. It shows on your organiser page, event pages, emails and every session.",
+   "An event or session can add its own logo, such as a campaign or partner, and show it on its own or beside yours."
+  ]
+ },
+ {
+  "id": "look",
+  "topic": "Account and team",
+  "title": "Light and dark mode",
+  "paras": [
+   "Set your usual look in Account, Profile: Light, Dark or Match My Device. The sun and moon button at the top switches it for now, until your next visit. Slides always show the session’s own theme."
+  ]
+ },
+ {
+  "id": "free",
+  "topic": "Alpha and plans",
+  "title": "What Free includes",
+  "paras": [
+   "Free is for 1 host: 3 live sessions a month, up to 50 people, 5 games, polls and Q&As per session, 1 upcoming event at a time with up to 50 guests, and reports kept for 30 days.",
+   "Co-hosts, Company Only and Invite Only events, and your logo come with Team."
+  ]
+ },
+ {
+  "id": "alpha",
+  "topic": "Alpha and plans",
+  "title": "What the alpha includes",
+  "paras": [
+   "The alpha is free while we test. Sessions have up to 100 people, and reports are kept for at least 12 months."
+  ]
+ },
+ {
+  "id": "privacy",
+  "topic": "Privacy",
+  "title": "Who sees what people type",
+  "paras": [
+   "Survey answers and anonymous questions stay anonymous. When people leave an email or contact details, only you see them, to follow up on that session.",
+   "You can add a link to your own privacy policy in Session Settings."
+  ]
+ }
+]

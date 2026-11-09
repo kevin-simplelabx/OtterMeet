@@ -32,12 +32,24 @@ export function LiveResults({ sessionId, blockId, activity, tally, rescue }: {
   if (activity.kind === 'IMPOSTER') {
     const t = tally && 'tables' in tally ? (tally as ImposterTally) : null;
     const caught = t?.results?.filter((r) => r.caught).length ?? 0;
+    const waiting = t?.unseated ?? [];
     return (
-      <span className="body-sm text-ink-muted">
-        Round {activity.round + 1} of {activity.rounds} · {activity.phase} · {t?.tables ?? 0} tables, {t?.players ?? 0} players
-        {activity.phase === 'vote' && ` · ${t?.votes_in ?? 0} votes in`}
-        {activity.phase === 'reveal' && ` · ${caught} of ${t?.results?.length ?? 0} imposters caught`}
-      </span>
+      <div className="flex flex-col gap-3">
+        <span className="body-sm text-ink-muted">
+          Round {activity.round + 1} of {activity.rounds} · {activity.phase} · {t?.tables ?? 0} tables, {t?.players ?? 0} players
+          {activity.phase === 'vote' && ` · ${t?.votes_in ?? 0} votes in`}
+          {activity.phase === 'reveal' && ` · ${caught} of ${t?.results?.length ?? 0} imposters caught`}
+        </span>
+        {waiting.length > 0 && (
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-md bg-action-soft">
+            <span className="body-sm">
+              {waiting.map((p) => `${p.avatar} ${p.nickname}`).join(', ')} {waiting.length === 1 ? 'is' : 'are'} waiting for a seat.
+              {activity.phase === 'words' ? '' : ' They’ll be dealt in when the next round starts.'}
+            </span>
+            {activity.phase === 'words' && <Button size="sm" variant="quiet" onClick={rescue}>Seat Them Now (S)</Button>}
+          </div>
+        )}
+      </div>
     );
   }
   if (activity.kind === 'THIS_OR_THAT') {

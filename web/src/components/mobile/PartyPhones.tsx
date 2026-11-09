@@ -154,10 +154,27 @@ export function ImposterPhone({ activity, mine, respond }: { activity: Of<'IMPOS
   const eyebrow = `Imposter · round ${activity.round + 1} of ${activity.rounds}`;
 
   if (!me?.seated) {
-    return <Card eyebrow={eyebrow} title="You’re spectating this round."><p className="body-lg m-0 text-ink-muted">Enjoy the drama. You’ll be dealt in next time.</p></Card>;
+    return activity.phase === 'words'
+      ? <Card eyebrow={eyebrow} title="Finding you a seat."><p className="body-lg m-0 text-ink-muted">Hang tight, your host is pulling up a chair for you at a table.</p></Card>
+      : <Card eyebrow={eyebrow} title="You’re spectating this round."><p className="body-lg m-0 text-ink-muted">Enjoy the drama. You’ll be dealt in when the next round starts.</p></Card>;
   }
 
-  const order = <p className="body m-0 text-ink-muted">You’re clue <strong className="text-ink">#{me.order}</strong> at {me.table}.</p>;
+  // Your table, in speaking order, so you know who you're playing with and when it's your turn.
+  const order = (
+    <div className="bg-surface-card border border-border rounded-xl p-4 flex flex-col gap-2">
+      <span className="eyebrow text-ink-muted">Your table · {me.table}</span>
+      <ol className="list-none m-0 p-0 flex flex-col gap-1">
+        {(me.players ?? []).map((p) => (
+          <li key={p.id} className={`flex items-center gap-2 body-sm px-2 py-1 rounded-md ${p.order === me.order ? 'bg-accent-soft text-accent' : ''}`}>
+            <span className="tag text-ink-muted w-5 text-right tabular-nums">{p.order}</span>
+            <span aria-hidden>{p.avatar}</span>
+            <span className="flex-1">{p.nickname}{p.order === me.order ? ' (you)' : ''}</span>
+          </li>
+        ))}
+      </ol>
+      <span className="body-sm text-ink-muted">Clues go in this order. You’re <strong className="text-ink">#{me.order}</strong>.</span>
+    </div>
+  );
 
   if (activity.phase === 'words') {
     const card = me.card;

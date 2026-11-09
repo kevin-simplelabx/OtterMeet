@@ -8,6 +8,7 @@
 
 /* Tailwind utilities backed by DS tokens: bg-surface, text-ink, border-border, rounded-lg, shadow-card, font-display… */
 @theme inline {
+  --breakpoint-3xl: 100rem; /* 1600px: the cockpit shows the Q&A queue as its own column */
   --color-*: initial;
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -54,6 +55,25 @@
   --shadow-card: var(--shadow-card);
   --shadow-float: var(--shadow-float);
   --shadow-pebble: var(--shadow-pebble);
+
+  /* Website palette (tech spec 3.3): bg-paper, text-navy, border-sand, bg-orange, text-link… */
+  --breakpoint-site: 47.5rem; /* 760px: the website's one breakpoint. Use max-site: for phone styles */
+  --color-paper: #faf7f2;
+  --color-sand: #e8d8c3;
+  --color-orange: #e58a13;
+  --color-link: #1d70b8;
+  --color-link-dark: #8cc1ec;
+  --color-brown: #6b4e3d;
+  --color-navy: #0d1b2a;
+  --color-navy-deep: #0a1520;
+  --color-navy-line: #22374d;
+  --color-copy: #3a2f27;
+  --color-copy-strong: #2a211b;
+  --color-stone: #957d69;
+  --color-oat: #d9cfc3;
+  --color-mist: #c9bdb0;
+  --color-cream: #fcebd3;
+  --color-sky: #eaf2fa;
 }
 
 @utility wrap {
@@ -72,4 +92,55 @@
   :focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
   a { color: var(--accent); }
   a:hover { color: var(--ink); }
+}
+
+/* The marketing website (/, /room, /events, /about, /help…). Plus Jakarta Sans for headings and buttons, Inter for text. */
+@layer components {
+  .site { font-family: var(--font-text); color: var(--color-navy); background: var(--color-paper); overflow-x: clip; }
+  .site a { color: var(--color-link); text-decoration: none; }
+  .site a:hover { color: var(--color-navy); }
+  .site :is(p, li, label) a { font-weight: 700; }
+  .site-dark a, .site .site-dark a { color: var(--color-link-dark); }
+  .site-dark a:hover, .site .site-dark a:hover { color: #fff; }
+  .site-dark .site-light a, .site-dark .site-light .site-eyebrow { color: var(--color-link); }
+  .site-dark .site-light a:hover { color: var(--color-navy); }
+  .site :focus-visible { box-shadow: none; outline: 2px solid var(--color-link); outline-offset: 3px; }
+  .site-dark :focus-visible { outline-color: var(--color-link-dark); }
+
+  .site-wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 32px; }
+  @media (max-width: 760px) { .site-wrap { padding-inline: 16px; } }
+
+  .site-eyebrow { margin: 0; font-family: var(--font-sans); font-weight: 800; font-size: 13px; line-height: 18px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--color-link); }
+  .site-dark .site-eyebrow { color: var(--color-link-dark); }
+  .site-head { margin: 0; font-family: var(--font-sans); font-weight: 800; }
+
+  .site-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; border-radius: 9999px; cursor: pointer;
+    background: var(--color-orange); font-family: var(--font-sans); font-weight: 800; text-decoration: none;
+    box-shadow: 0 3px 0 rgba(13, 27, 42, 0.18), 0 6px 14px rgba(13, 27, 42, 0.1); transition: transform 120ms;
+  }
+  .site a.site-btn, .site a.site-btn:hover, .site button.site-btn { color: var(--color-navy); }
+  .site-btn:hover { transform: translateY(-1px); }
+  .site-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .site-btn-ghost { background: transparent; box-shadow: none; border: 1.5px solid var(--color-stone); font-weight: 700; }
+  .site-btn-ghost:hover { transform: none; background: #fff; }
+
+  .site-list { margin: 0; padding-left: 20px; list-style: disc; display: flex; flex-direction: column; gap: 6px; font-size: 16px; line-height: 24px; color: var(--color-copy); }
+
+  .site-field { width: 100%; box-sizing: border-box; border: 1.5px solid var(--color-stone); background: #fff; color: var(--color-navy); font: inherit; }
+
+  /* Screenshots of the app fade out at the bottom, so a tall screen doesn't end in a hard edge. */
+  .site-shot { display: block; width: 100%; height: auto; }
+  .site-fade { -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); }
+
+  .site-faq > summary { list-style: none; cursor: pointer; }
+  .site-faq > summary::-webkit-details-marker { display: none; }
+  .site-faq[open] .site-plus { transform: rotate(45deg); }
+
+  .site-doc h2 { margin: 40px 0 10px; font-family: var(--font-sans); font-weight: 800; font-size: 24px; line-height: 32px; }
+  .site-doc :is(p, li) { font-size: 17px; line-height: 28px; color: var(--color-copy-strong); }
+  .site-doc p { margin: 0 0 12px; }
+  .site-doc ul { margin: 0 0 12px; padding-left: 22px; list-style: disc; }
+  .site-doc li { margin-bottom: 6px; }
+  .site-doc .site-blank { background: var(--color-cream); padding: 0 4px; border-radius: 4px; }
 }

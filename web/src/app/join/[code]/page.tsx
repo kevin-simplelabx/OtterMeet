@@ -6,6 +6,8 @@ import { useParams } from 'next/navigation';
 import { Button, EmptyState } from '@/ds';
 import { Alert, Field, inputClass } from '@/components/AuthForm';
 import { Wordmark } from '@/components/SiteHeader';
+import { GroupPicker, groupLabel } from '@/components/GroupsEditor';
+import { Dialog } from '@/components/Dialog';
 import { ApiError, api } from '@/lib/api';
 import { BLOCK_TYPES } from '@/lib/blocks';
 import { triggerHaptic } from '@/lib/haptics';
@@ -13,7 +15,7 @@ import { useLiveRoom, type RoomEvent } from '@/lib/live';
 import { EmojiShower, type EmojiShowerHandle } from '@/components/stage/EmojiShower';
 import { ImposterPhone, SpeedQuizPhone, SplitWordsPhone } from '@/components/mobile/PartyPhones';
 import { FeedbackPhone, FeedbackToast, QnaPhone, ThisOrThatPhone, WordCloudPhone } from '@/components/mobile/GamePhones';
-import { REACTIONS, type Participant, type StageState } from '@/lib/types';
+import { REACTIONS, type Group, type Participant, type StageState } from '@/lib/types';
 
 const tokenKey = (code: string) => `ottermeet:pt:${code}`;
 const store = {
@@ -27,6 +29,8 @@ export default function JoinRoom() {
   const [phase, setPhase] = useState<'loading' | 'form' | 'joined' | 'missing'>('loading');
   const [room, setRoom] = useState<StageState | null>(null);
   const [avatars, setAvatars] = useState<string[]>([]);
+  const [groups, setGroups] = useState<Group[]>([]);
+  const [changingTable, setChangingTable] = useState(false);
   const [me, setMe] = useState<Participant | null>(null);
   const [token, setToken] = useState<string | undefined>();
 
@@ -38,12 +42,12 @@ export default function JoinRoom() {
     const retry = (fn: () => void) => { timer = setTimeout(() => !cancelled && fn(), 2000); };
     const isMissing = (e: unknown) => e instanceof ApiError && e.status === 404;
 
-    const fresh = () => api<{ room: StageState; avatars: string[] }>(`/join/${code}`).then((d) => {
-      if (!cancelled) { setRoom(d.room); setAvatars(d.avatars); setPhase('form'); }
+    const fresh = () => api<{ room: StageState; avatars: string[]; groups: Group[] }>(`/join/${code}`).then((d) => {
+      if (!cancelled) { setRoom(d.room); setAvatars(d.avatars); setGroups(d.groups ?? []); setPhase('form'); }
     }, (e) => (isMissing(e) ? !cancelled && setPhase('missing') : retry(fresh)));
 
-    const rejoin = (saved: string) => api<{ participant: Participant; room: StageState }>(`/join/${code}/me`, { headers: { 'X-Participant-Token': saved } }).then((d) => {
-      if (!cancelled) { setMe(d.participant); setRoom(d.room); setToken(saved); setPhase('joined'); }
+    const rejoin = (saved: string) => api<{ participant: Participant; room: StageState; groups: Group[] }>(`/join/${code}/me`, { headers: { 'X-Participant-Token': saved } }).then((d) => {
+      if (!cancelled) { setMe(d.participant); setRoom(d.room); setGroups(d.groups ?? []); setToken(saved); setPhase('joined'); }
     }, (e) => {
       if (!isMissing(e)) return retry(() => rejoin(saved));
       store.del(tokenKey(code));
@@ -59,7 +63,16 @@ export default function JoinRoom() {
     <div className="min-h-dvh flex flex-col">
       <header className="px-4 py-3 flex items-center justify-between gap-3 border-b border-border">
         <Wordmark />
-        {me && <span className="body-sm inline-flex items-center gap-2 min-w-0"><span className="text-2xl" aria-hidden>{me.avatar}</span><span className="truncate">{me.nickname}</span></span>}
+        {me && (
+          <span className="body-sm inline-flex items-center gap-2 min-w-0">
+            {groups.length > 0 && (
+              <button type="button" onClick={() => setChangingTable(true)} className="tag px-3 py-1 rounded-full bg-accent-soft text-accent cursor-pointer whitespace-nowrap">
+                {groupLabel(groups, me.group) ?? 'Pick your table'}
+              </button>
+            )}
+            <span className="text-2xl" aria-hidden>{me.avatar}</span><span className="truncate">{me.nickname}</span>
+          </span>
+        )}
       </header>
       <main className="flex-1 flex flex-col px-4 py-6 max-w-[480px] w-full mx-auto">
         {phase === 'loading' && <p className="body text-ink-muted">Looking for room {code}…</p>}
@@ -69,19 +82,30 @@ export default function JoinRoom() {
           </EmptyState>
         )}
         {phase === 'form' && room && (
-          <JoinForm code={code} room={room} avatars={avatars} onJoined={(p, t) => {
+          <JoinForm code={code} room={room} avatars={avatars} groups={groups} onJoined={(p, t) => {
             store.set(tokenKey(code), t); setMe(p); setToken(t); setPhase('joined'); triggerHaptic('success');
           }} />
         )}
         {phase === 'joined' && me && token && <InRoom code={code} token={token} initial={room} />}
+        {changingTable && me && token && (
+          <Dialog title="Change your table" size="sm" onClose={() => setChangingTable(false)}>
+            <GroupPicker groups={groups} value={me.group ?? null} onChange={async (group) => {
+              const d = await api<{ participant: Participant }>(`/join/${code}/me`, { method: 'PATCH', headers: { 'X-Participant-Token': token }, body: { group } }).catch(() => null);
+              if (d) { setMe(d.participant); triggerHaptic('tap'); }
+              setChangingTable(false);
+            }} />
+            <p className="body-sm m-0 text-ink-muted">Games that play in groups use your new table from their next round.</p>
+          </Dialog>
+        )}
       </main>
     </div>
   );
 }
 
-function JoinForm({ code, room, avatars, onJoined }: { code: string; room: StageState; avatars: string[]; onJoined: (p: Participant, token: string) => void }) {
+function JoinForm({ code, room, avatars, groups, onJoined }: { code: string; room: StageState; avatars: string[]; groups: Group[]; onJoined: (p: Participant, token: string) => void }) {
   const [nickname, setNickname] = useState('');
   const [avatar, setAvatar] = useState(avatars[0] ?? '🦦');
+  const [group, setGroup] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -89,7 +113,7 @@ function JoinForm({ code, room, avatars, onJoined }: { code: string; room: Stage
     e.preventDefault();
     setBusy(true); setError('');
     try {
-      const d = await api<{ participant: Participant; token: string }>(`/join/${code}`, { method: 'POST', body: { nickname, avatar } });
+      const d = await api<{ participant: Participant; token: string }>(`/join/${code}`, { method: 'POST', body: { nickname, avatar, group } });
       onJoined(d.participant, d.token);
     } catch (err) {
       setError((err as Error).message); setBusy(false); triggerHaptic('error');
@@ -119,6 +143,7 @@ function JoinForm({ code, room, avatars, onJoined }: { code: string; room: Stage
           ))}
         </div>
       </fieldset>
+      {groups.length > 0 && <GroupPicker groups={groups} value={group} onChange={(g) => { setGroup(g); triggerHaptic('tap'); }} />}
       <Button type="submit" variant="action" size="lg" block disabled={busy || !nickname.trim()}>{busy ? 'Joining…' : 'Join Room'}</Button>
     </form>
   );

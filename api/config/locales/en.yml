@@ -10,6 +10,7 @@ en:
       participant:
         nickname: "That nickname"
         avatar_icon: "That avatar"
+        group_code: "Your table"
       session:
         title: "The session title"
       timeline_block:

@@ -21,8 +21,13 @@ class SessionsController < ApplicationController
 
   def update
     @session.title = params[:title] if params.key?(:title)
-    @session.settings = @session.settings.merge(params.require(:settings).permit(:allow_emoji_shower, :collect_game_feedback, :max_participants).to_h) if params.key?(:settings)
+    if params.key?(:settings)
+      settings = params.require(:settings)
+      @session.settings = @session.settings.merge(settings.permit(:allow_emoji_shower, :collect_game_feedback, :max_participants).to_h)
+      @session.settings = @session.settings.merge("groups" => Session.clean_groups(settings[:groups])) if settings.key?(:groups)
+    end
     @session.save!
+    LiveBroadcast.state(@session) if @session.live? && params.dig(:settings, :groups)
     render json: { session: @session }
   end
 

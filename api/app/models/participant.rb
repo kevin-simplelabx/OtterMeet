@@ -20,5 +20,13 @@ class Participant < ApplicationRecord
     find_by(token_digest: AuthToken.digest(raw)) if raw.present?
   end
 
-  def as_json(*) = { id:, nickname:, avatar: avatar_icon, total_score:, is_connected: }
+  validate :group_is_one_of_the_hosts, if: -> { group_code.present? && will_save_change_to_group_code? }
+
+  def as_json(*) = { id:, nickname:, avatar: avatar_icon, total_score:, is_connected:, group: group_code }
+
+  private
+
+  def group_is_one_of_the_hosts
+    errors.add(:group_code, "isn’t one of this room’s tables. Pick one from the list.") unless session.group_named(group_code)
+  end
 end

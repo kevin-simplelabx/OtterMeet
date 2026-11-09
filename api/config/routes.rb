@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get "join/:code", to: "join#show"
     post "join/:code", to: "join#create"
     get "join/:code/me", to: "join#me"
+    patch "join/:code/me", to: "join#update"
 
     match "*path", to: ->(_) { [404, { "content-type" => "application/json" }, [{ error: "We couldn’t find that one. It may have drifted off." }.to_json]] }, via: :all
   end

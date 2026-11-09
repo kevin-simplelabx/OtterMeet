@@ -122,14 +122,20 @@ class SessionChannel < ApplicationCable::Channel
   end
 
   # Straggler rescue (S key): slots latecomers and stranded people into Split Words pairs.
+  # Seats latecomers (S key): Split Words pairs them up; Imposter adds them to a table while cards are read.
   def rescue_stragglers
     return unless host?
     @session.reload
     block = @session.active_block
-    return unless block&.block_type == "SPLIT_WORDS"
-    Activities::SplitWords.rescue!(@session, block)
+    case block&.block_type
+    when "SPLIT_WORDS" then Activities::SplitWords.rescue!(@session, block)
+    when "IMPOSTER" then Activities::Imposter.rescue!(@session, block, LiveStore.step(@session))
+    else return
+    end
     LiveBroadcast.mine_all(@session)
     LiveBroadcast.tally(@session, block)
+  rescue ArgumentError => e
+    error(e.message)
   end
 
   def moderate_qna(data)

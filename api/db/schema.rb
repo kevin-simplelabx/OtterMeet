@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_28_150000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_29_090000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -57,6 +57,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_28_150000) do
     t.datetime "last_seen_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "group_code", limit: 20
+    t.index ["session_id", "group_code"], name: "index_participants_on_session_id_and_group_code"
     t.index ["session_id", "is_connected"], name: "idx_participants_session"
     t.index ["session_id", "nickname"], name: "unique_nickname_per_session", unique: true
     t.index ["token_digest"], name: "index_participants_on_token_digest", unique: true

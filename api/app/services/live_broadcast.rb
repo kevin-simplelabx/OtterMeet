@@ -61,6 +61,8 @@ module LiveBroadcast
 
   def roster(session)
     roster = roster_json(session)
+    # Arrivals and departures change who's waiting for a seat in Split Words / Imposter.
+    Activities.mark_dirty(session, session.active_block) if session.active_block
     ActionCable.server.broadcast(host_stream(session), { event: "ROSTER", **roster })
     # The stage lobby shows the crowd's avatars; phones only need the head count.
     ActionCable.server.broadcast(stage_stream(session), { event: "CROWD", count: roster[:count],

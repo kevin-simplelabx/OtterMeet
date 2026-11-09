@@ -5,10 +5,11 @@ import { useParams, useRouter } from 'next/navigation';
 import { Button, CrewNote, RaftToggle } from '@/ds';
 import { Alert, Field, inputClass } from '@/components/AuthForm';
 import { Dialog } from '@/components/Dialog';
+import { GroupsEditor } from '@/components/GroupsEditor';
 import { SessionTimelineBuilder } from '@/components/SessionTimelineBuilder';
 import { StatusBadge } from '@/components/StatusBadge';
 import { api } from '@/lib/api';
-import type { LiveSession, TimelineBlockItem } from '@/lib/types';
+import type { Group, LiveSession, TimelineBlockItem } from '@/lib/types';
 
 export default function SessionEditor() {
   const { id } = useParams<{ id: string }>();
@@ -111,11 +112,21 @@ export default function SessionEditor() {
         <section className="flex flex-col gap-6">
           <SessionTimelineBuilder blocks={blocks} activeIndex={live ? session.active_block_index : undefined}
             onChange={(b) => { setBlocks(b); setDirty(true); }} />
-          <div className="flex flex-wrap items-center justify-end gap-3 sticky bottom-0 bg-surface py-4 border-t border-border">
-            {dirty && <span className="body-sm text-ink-muted mr-auto">Unsaved changes</span>}
-            <Button variant="accent" onClick={save} disabled={busy || !dirty}>{busy ? 'Saving…' : 'Save Timeline'}</Button>
-          </div>
+          {/* Room for the floating save bar, so it never covers the last block. */}
+          {dirty && <div aria-hidden className="h-20" />}
         </section>
+
+        {/* Only shows up when there's something to save, floating over the page rather than inside the timeline. */}
+        {dirty && (
+          <div role="region" aria-label="Unsaved changes"
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-32px)] max-w-[560px] bg-surface-card border border-border rounded-full shadow-float pl-6 pr-2 py-2 flex items-center justify-between gap-3 animate-[om-pop_200ms_ease-out]">
+            <span className="body-sm text-ink">You’ve got unsaved changes.</span>
+            <div className="flex gap-2">
+              <Button variant="quiet" size="sm" disabled={busy} onClick={() => { setTitle(session.title); setBlocks(session.blocks); setDirty(false); }}>Discard</Button>
+              <Button variant="accent" size="sm" onClick={save} disabled={busy}>{busy ? 'Saving…' : 'Save Timeline'}</Button>
+            </div>
+          </div>
+        )}
 
         <aside className="flex flex-col gap-6 lg:sticky lg:top-24">
           <div className="bg-surface-card border border-border rounded-lg shadow-card p-5 flex flex-col gap-4">
@@ -134,6 +145,7 @@ export default function SessionEditor() {
                 }} />
             </Field>
           </div>
+          <GroupsEditor groups={session.settings.groups ?? []} busy={busy} onSave={(groups: Group[]) => updateSettings({ groups })} />
           <CrewNote character="rue">Rue’s tip: put a Holding Screen block on for talks, so phones can still send reactions.</CrewNote>
           <Button variant="quiet" onClick={() => setConfirmDelete(true)}>Delete Session</Button>
         </aside>

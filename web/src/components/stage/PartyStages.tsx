@@ -116,12 +116,14 @@ export function ImposterStage({ activity, tally }: { activity: Of<'IMPOSTER'>; t
   const breathLeft = useCountdown(activity.last_breath_ms, `${activity.round}-${activity.phase}`);
   const head = <span className="eyebrow text-ink-muted">Imposter · round {activity.round + 1} of {activity.rounds}</span>;
 
+  const seating = t?.seating ?? activity.seating ?? [];
   if (activity.phase === 'words') {
     return (
-      <div className="h-full flex flex-col items-center justify-center gap-[4vh] px-[8vw] text-center">
+      <div className="h-full flex flex-col justify-center gap-[3vh] px-[6vw]">
         {head}
-        <h1 className="hero m-0 text-balance">Someone at your table is faking it.</h1>
-        <p className="body-lg m-0 text-ink-muted max-w-[60ch]">Hold your phone close and press to peek at your word. Then, in your speaking order, give one clue out loud. Not too obvious.</p>
+        <h1 className="display m-0 text-balance">Someone at your table is faking it.</h1>
+        <p className="body-lg m-0 text-ink-muted max-w-[70ch]">Press and hold your phone to peek at your word. Then go round your table in order, one clue each. Not too obvious.</p>
+        <SeatingChart seating={seating} />
       </div>
     );
   }
@@ -164,6 +166,29 @@ export function ImposterStage({ activity, tally }: { activity: Of<'IMPOSTER'>; t
           );
         })}
       </div>
+    </div>
+  );
+}
+
+/** Every table with its players in speaking order, so people can find their group in the room. */
+function SeatingChart({ seating }: { seating: { number: number; name: string; players: { nickname: string; avatar: string; order: number }[] }[] }) {
+  if (seating.length === 0) return null;
+  return (
+    <div className="grid gap-[1.5vw] grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
+      {seating.map((s) => (
+        <div key={s.number} className="rounded-lg bg-surface-card p-[1.8vh] flex flex-col gap-2 min-w-0">
+          <span className="title truncate">{s.name}</span>
+          <ol className="list-none m-0 p-0 flex flex-col gap-0.5">
+            {s.players.map((p) => (
+              <li key={p.order} className="body-sm flex items-center gap-2 min-w-0">
+                <span className="tag text-ink-muted w-4 text-right tabular-nums">{p.order}</span>
+                <span aria-hidden>{p.avatar}</span>
+                <span className="truncate">{p.nickname}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
     </div>
   );
 }

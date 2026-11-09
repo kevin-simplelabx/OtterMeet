@@ -1,5 +1,7 @@
 # OtterMeet
 
+> Taking this to production? Start with [HANDOVER.md](HANDOVER.md).
+
 Live audience engagement for workshops, town halls and offsites of 100+ people: one QR code, attendees play
 from their phones, the host runs the room from a laptop while a clean stage screen runs on the projector.
 
@@ -35,7 +37,7 @@ Open http://localhost:3000. Next.js proxies `/api/*` to Rails on :3001; the live
 | Who | Path |
 | --- | --- |
 | Everyone | `/` landing, `/join` enter a room code |
-| Hosts | `/signup`, `/login`, `/portal` sessions, `/portal/sessions/:id` timeline builder, `/portal/account` |
+| Hosts | `/start` (sign up), `/login`, `/portal` sessions, `/portal/sessions/:id` timeline builder, `/portal/account` |
 | Host laptop | `/host/:id` cockpit (clicker keys: Space/→/PageDown next, ←/PageUp back, B or . blackout) |
 | Projector | `/stage/:id` stage canvas (F for full screen) |
 | Attendees | `/join/:code` nickname, avatar, reactions; rejoins automatically after a lock or drop |
@@ -77,6 +79,12 @@ rejoin, the emoji shower, and all 7 activities:
 - Imposter: tables from the Split Words tribes (or about 6), hold-to-reveal cards, blank or chameleon imposter,
   votes, and a 15-second Last Breath steal.
 Plus the 👍/👎 toast after each game.
+
+Tables & groups: hosts can set up numbered or named tables for a session (e.g. teams assigned before the day).
+Attendees pick theirs when they join (`group` on `POST /api/join/:code`) and can change it later
+(`PATCH /api/join/:code/me`). Imposter plays at these tables (groups under 3 people here join another table).
+Latecomers are dealt in automatically: Split Words slots them into a pair, Imposter seats them at their own
+table while cards are read (`LiveSeating`); every other game takes answers from the moment someone arrives.
 
 Next: the end-of-event summary report with CSV export.
 

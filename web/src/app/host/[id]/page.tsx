@@ -8,13 +8,15 @@ import { Alert } from '@/components/AuthForm';
 import { RoomQr, joinUrl } from '@/components/RoomQr';
 import { StatusBadge } from '@/components/StatusBadge';
 import { StagePreview } from '@/components/host/StagePreview';
+import { groupLabel } from '@/components/GroupsEditor';
 import { LiveResults } from '@/components/host/LiveResults';
-import { QnAModerationDrawer } from '@/components/host/QnAModerationDrawer';
+import { QnAModerationDrawer, QnAModerationPanel } from '@/components/host/QnAModerationDrawer';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { CLICKER_KEYS, useHostClicker } from '@/hooks/useHostClicker';
 import { api } from '@/lib/api';
 import { useRequireHost } from '@/lib/auth';
 import { BLOCK_TYPES, formatMinutes } from '@/lib/blocks';
-import { useLiveRoom, useStageHint } from '@/lib/live';
+import { useLiveRoom, useStageHint, type RoomEvent } from '@/lib/live';
 import type { LiveSession, Roster, StageState } from '@/lib/types';
 
 export default function HostCockpit() {
@@ -27,6 +29,8 @@ export default function HostCockpit() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [qnaOpen, setQnaOpen] = useState(false);
+  // Wide screens get the Q&A queue as its own column instead of a drawer.
+  const wide = useMediaQuery('(min-width: 100rem)');
 
   const load = useCallback(() => api<{ session: LiveSession; live: StageState; roster: Roster }>(`/sessions/${id}/live`).then((d) => {
     setSession(d.session); setInitial(d.live); setInitialRoster(d.roster);
@@ -34,7 +38,8 @@ export default function HostCockpit() {
 
   useEffect(() => { if (host) load(); }, [host, load]);
 
-  const { state, roster, connected, perform, tally, qna, qnaQueue } = useLiveRoom(session?.room_code, { role: 'host', initial });
+  const onEvent = useCallback((e: RoomEvent) => { if (e.event === 'ERROR') setError(e.message); }, []);
+  const { state, roster, connected, perform, tally, qna, qnaQueue } = useLiveRoom(session?.room_code, { role: 'host', initial, onEvent });
   const hint = useStageHint(session?.room_code);
   const people = roster ?? initialRoster;
   const blocks = useMemo(() => session?.blocks ?? [], [session]);
@@ -78,7 +83,8 @@ export default function HostCockpit() {
     finally { setBusy(false); }
   }
 
-  const openStage = () => window.open(`/stage/${id}`, `ottermeet-stage-${id}`, 'popup,width=1280,height=720');
+  // A named tab, so pressing it again brings back the same stage tab instead of opening another.
+  const openStage = () => window.open(`/stage/${id}`, `ottermeet-stage-${id}`);
 
   if (!host || (!session && !error)) return <p className="body text-ink-muted p-8">Warming up the cockpit…</p>;
   if (!session || !state) return <div className="p-8"><Alert>{error || 'We couldn’t find that session. It may have drifted off.'}</Alert></div>;
@@ -94,7 +100,7 @@ export default function HostCockpit() {
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-10 bg-surface border-b border-border">
-        <div className="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3">
+        <div className="mx-auto w-full max-w-[1800px] px-[clamp(16px,2.5vw,40px)] flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 min-w-0">
             <Link href={`/portal/sessions/${id}`} className="body-sm">← Edit</Link>
             <h1 className="title m-0 truncate">{session.title}</h1>
@@ -105,7 +111,7 @@ export default function HostCockpit() {
             </span>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button variant="quiet" size="sm" icon="easel" onClick={() => setQnaOpen(true)}>Q&amp;A Queue{pending.length ? ` (${pending.length})` : ''}</Button>
+            {!wide && <Button variant="quiet" size="sm" icon="easel" onClick={() => setQnaOpen(true)}>Q&amp;A Queue{pending.length ? ` (${pending.length})` : ''}</Button>}
             <Button variant="accent" size="sm" icon="cabin" onClick={openStage}>Open Stage Screen</Button>
             {live
               ? <Button variant="quiet" size="sm" onClick={() => act('finish')} disabled={busy}>End Session</Button>
@@ -114,7 +120,7 @@ export default function HostCockpit() {
         </div>
       </header>
 
-      <main className="wrap pt-8 pb-16 grid gap-8 grid-cols-[minmax(0,1fr)_340px] max-[1024px]:grid-cols-1 items-start">
+      <main className="mx-auto w-full max-w-[1800px] px-[clamp(16px,2.5vw,40px)] pt-8 pb-16 grid gap-8 items-start grid-cols-1 lg:grid-cols-[minmax(0,1fr)_400px] xl:grid-cols-[minmax(0,1fr)_480px] 3xl:grid-cols-[minmax(0,1fr)_480px_380px]">
         <div className="flex flex-col gap-6 min-w-0">
           {error && <Alert>{error}</Alert>}
           {!live && (
@@ -125,11 +131,10 @@ export default function HostCockpit() {
             </Alert>
           )}
 
-          <section aria-label="On stage now" className={`rounded-xl p-6 flex flex-col gap-5 shadow-float ${state.blackout ? 'bg-black' : 'bg-surface-card border border-border'}`}
-            data-theme={state.blackout ? 'dark' : undefined}>
-            <div className="flex flex-wrap items-center justify-between gap-3">
+          <section aria-label="On stage now" className={`rounded-xl p-6 flex flex-col gap-5 shadow-float bg-surface-card border border-border transition-shadow ${state.blackout ? 'ring-4 ring-action' : ''}`}>
+            <div className="flex flex-wrap items-center justify-between gap-3 min-h-8">
               <span className="eyebrow text-ink-muted">On stage now · block {state.block_index + 1} of {blocks.length}</span>
-              {state.blackout && <PebbleBadge tone="action">Stage blacked out</PebbleBadge>}
+              <span className={state.blackout ? '' : 'invisible'} aria-hidden={!state.blackout}><PebbleBadge tone="action">Stage blacked out</PebbleBadge></span>
             </div>
             {current && (
               <div className="flex items-center gap-4">
@@ -141,27 +146,29 @@ export default function HostCockpit() {
                 </div>
               </div>
             )}
-            {a && current?.id && !state.blackout && <LiveResults sessionId={id} blockId={current.id} activity={a} tally={tally} rescue={() => perform('rescue_stragglers')} />}
+            {a && current?.id && <LiveResults sessionId={id} blockId={current.id} activity={a} tally={tally} rescue={() => perform('rescue_stragglers')} />}
             <div className="flex flex-wrap items-center gap-3">
               <Button variant="quiet" icon="arrow-right" onClick={() => step(-1)} disabled={!live || (state.block_index === 0 && state.step === 0)}
                 className="[&_.om-icon]:rotate-180">Previous</Button>
               <Button variant="action" iconEnd="arrow-right" onClick={() => step(1)} disabled={!live || (!moreSteps && !nextBlock)}>
                 {nextLabel}
               </Button>
-              <Button variant="quiet" onClick={toggleBlackout} disabled={!live}>{state.blackout ? 'Show Stage' : 'Blackout'}</Button>
+              <Button variant="quiet" onClick={toggleBlackout} disabled={!live} className="min-w-[9.5rem]">{state.blackout ? 'Show Stage' : 'Blackout'}</Button>
             </div>
           </section>
 
           <section aria-label="Timeline" className="flex flex-col gap-3">
-            <h2 className="heading-3 m-0">Timeline</h2>
+            <div className="flex items-baseline justify-between gap-3">
+              <h2 className="heading-3 m-0">Timeline</h2>
+              <span className="body-sm text-ink-muted">Move with Next and Previous</span>
+            </div>
             <ol className="list-none m-0 p-0 flex flex-col gap-2">
               {blocks.map((b, i) => {
                 const active = i === state.block_index;
                 return (
-                  <li key={b.id}>
-                    <button type="button" onClick={() => goto(i)} disabled={!live} aria-current={active ? 'step' : undefined}
-                      className={`w-full text-left flex items-center gap-3 p-3 rounded-lg border cursor-pointer disabled:cursor-default
-                        ${active ? 'border-success bg-success-soft' : i < state.block_index ? 'border-border bg-surface-card opacity-70' : 'border-border bg-surface-card hover:bg-surface-fill'}`}>
+                  <li key={b.id} aria-current={active ? 'step' : undefined}
+                    className={`flex items-center gap-3 p-3 rounded-lg border
+                      ${active ? 'border-success bg-success-soft' : i < state.block_index ? 'border-border bg-surface-card opacity-70' : 'border-border bg-surface-card'}`}>
                       <span className="tag text-ink-muted w-6 text-right tabular-nums">{i + 1}</span>
                       <Icon name={BLOCK_TYPES[b.block_type].icon} size={20} />
                       <span className="flex-1 min-w-0 flex flex-col">
@@ -169,7 +176,6 @@ export default function HostCockpit() {
                         <span className="meta text-ink-muted">{BLOCK_TYPES[b.block_type].label} · {formatMinutes(b.duration_estimate_sec)}</span>
                       </span>
                       {active && <PebbleBadge tone="success">On now</PebbleBadge>}
-                    </button>
                   </li>
                 );
               })}
@@ -198,6 +204,7 @@ export default function HostCockpit() {
                     <li key={p.id} className={`flex items-center gap-2 body-sm py-1 ${p.is_connected ? '' : 'opacity-50'}`}>
                       <span className="text-xl" aria-hidden>{p.avatar}</span>
                       <span className="flex-1 truncate">{p.nickname}</span>
+                      {p.group && <span className="meta text-ink-muted whitespace-nowrap">{groupLabel(session.settings.groups ?? [], p.group)}</span>}
                       {!p.is_connected && <span className="meta text-ink-muted">away</span>}
                     </li>
                   ))}
@@ -214,11 +221,16 @@ export default function HostCockpit() {
             </dl>
           </div>
 
-          <CrewNote character="otto">Drag the stage window onto the projector, press F, then steer the whole raft from here.</CrewNote>
+          <CrewNote character="otto">Drag the stage tab onto the projector screen, press F, then steer the whole raft from here.</CrewNote>
           <Button variant="quiet" onClick={() => router.push('/portal')}>Back to Portal</Button>
         </aside>
+        {wide && (
+          <div className="sticky top-24">
+            <QnAModerationPanel active queue={pending} feed={qna} moderate={moderate} />
+          </div>
+        )}
       </main>
-      <QnAModerationDrawer open={qnaOpen} onClose={() => setQnaOpen(false)} queue={pending} feed={qna} moderate={moderate} />
+      {!wide && <QnAModerationDrawer open={qnaOpen} onClose={() => setQnaOpen(false)} queue={pending} feed={qna} moderate={moderate} />}
     </div>
   );
 }
