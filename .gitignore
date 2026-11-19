@@ -5,3 +5,6 @@ node_modules/
 
 # Stray file Windows creates from "> nul"
 nul
+
+# Personal notes
+.notes/
